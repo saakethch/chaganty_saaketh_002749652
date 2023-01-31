@@ -45,19 +45,19 @@ public class ViewRecipe extends javax.swing.JFrame {
         imagePath = new javax.swing.JLabel();
         numItems = new javax.swing.JLabel();
         description = new javax.swing.JLabel();
-        servingSize = new javax.swing.JLabel();
+        servingSizee = new javax.swing.JLabel();
         category = new javax.swing.JLabel();
         difficultyLevel = new javax.swing.JProgressBar();
         jLabel5 = new javax.swing.JLabel();
         dateAdded = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        category1 = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        category2 = new javax.swing.JLabel();
+        name = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        category3 = new javax.swing.JLabel();
-        category4 = new javax.swing.JLabel();
+        usename = new javax.swing.JLabel();
+        phone = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         viewRecipeList1 = new javax.swing.JButton();
 
@@ -178,9 +178,9 @@ public class ViewRecipe extends javax.swing.JFrame {
         description.setForeground(new java.awt.Color(255, 255, 255));
         description.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
 
-        servingSize.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        servingSize.setForeground(new java.awt.Color(255, 255, 255));
-        servingSize.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        servingSizee.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        servingSizee.setForeground(new java.awt.Color(255, 255, 255));
+        servingSizee.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
 
         category.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         category.setForeground(new java.awt.Color(255, 255, 255));
@@ -201,17 +201,17 @@ public class ViewRecipe extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Username");
 
-        category1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        category1.setForeground(new java.awt.Color(255, 255, 255));
-        category1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        email.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        email.setForeground(new java.awt.Color(255, 255, 255));
+        email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
 
         jLabel15.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(204, 204, 255));
         jLabel15.setText("Chef's Details");
 
-        category2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        category2.setForeground(new java.awt.Color(255, 255, 255));
-        category2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        name.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        name.setForeground(new java.awt.Color(255, 255, 255));
+        name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
 
         jLabel16.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -221,13 +221,13 @@ public class ViewRecipe extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Email");
 
-        category3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        category3.setForeground(new java.awt.Color(255, 255, 255));
-        category3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        usename.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        usename.setForeground(new java.awt.Color(255, 255, 255));
+        usename.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
 
-        category4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        category4.setForeground(new java.awt.Color(255, 255, 255));
-        category4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        phone.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        phone.setForeground(new java.awt.Color(255, 255, 255));
+        phone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
 
         jLabel18.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -265,11 +265,11 @@ public class ViewRecipe extends javax.swing.JFrame {
                         .addGap(207, 207, 207)
                         .addComponent(jLabel6)
                         .addGap(41, 41, 41)
-                        .addComponent(servingSize, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(servingSizee, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addGap(42, 42, 42)
-                        .addComponent(category2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(127, 127, 127)
                         .addComponent(jLabel9)
                         .addGap(58, 58, 58)
@@ -277,7 +277,7 @@ public class ViewRecipe extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addGap(43, 43, 43)
-                        .addComponent(category1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(127, 127, 127)
                         .addComponent(jLabel12)
                         .addGap(11, 11, 11)
@@ -285,7 +285,7 @@ public class ViewRecipe extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addGap(14, 14, 14)
-                        .addComponent(category3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(usename, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(127, 127, 127)
                         .addComponent(jLabel8)
                         .addGap(4, 4, 4)
@@ -293,7 +293,7 @@ public class ViewRecipe extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addGap(40, 40, 40)
-                        .addComponent(category4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(200, 200, 200)
@@ -327,29 +327,29 @@ public class ViewRecipe extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(servingSize, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(servingSizee, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18)
-                    .addComponent(category2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
-                    .addComponent(category1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(imagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
-                    .addComponent(category3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usename, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(numItems, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
-                    .addComponent(category4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -440,13 +440,10 @@ public class ViewRecipe extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel category;
-    private javax.swing.JLabel category1;
-    private javax.swing.JLabel category2;
-    private javax.swing.JLabel category3;
-    private javax.swing.JLabel category4;
     private javax.swing.JLabel dateAdded;
     private javax.swing.JLabel description;
     private javax.swing.JProgressBar difficultyLevel;
+    private javax.swing.JLabel email;
     private javax.swing.JCheckBox glutenFree;
     private javax.swing.JLabel imagePath;
     private javax.swing.JLabel jLabel10;
@@ -466,9 +463,12 @@ public class ViewRecipe extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton menuButton;
+    private javax.swing.JLabel name;
     private javax.swing.JLabel numItems;
+    private javax.swing.JLabel phone;
     private javax.swing.JLabel recipeTitle;
-    private javax.swing.JLabel servingSize;
+    private javax.swing.JLabel servingSizee;
+    private javax.swing.JLabel usename;
     private javax.swing.JLabel username;
     private javax.swing.JButton viewRecipeList;
     private javax.swing.JButton viewRecipeList1;
