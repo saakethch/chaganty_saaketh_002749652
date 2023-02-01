@@ -5,6 +5,10 @@
 package UI;
 
 import Model.CookBook;
+import Model.Recipe;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 /**
  *
@@ -15,10 +19,17 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
-    private CookBook cookBook;
-
-    public Home() {
+    public CookBook cookBook;
+    public Home(CookBook cookBook1) {
+        this.cookBook = cookBook1;
         initComponents();
+        refreshList();
+    }
+//    
+    public Home() {
+        this.cookBook = new CookBook();
+        initComponents();
+        refreshList();
     }
 
     /**
@@ -70,7 +81,7 @@ public class Home extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         myRecipes = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
+        addRecipeButton = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -297,17 +308,17 @@ public class Home extends javax.swing.JFrame {
 
         jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 290));
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(204, 204, 255));
-        jButton1.setText("Add Recipe");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addRecipeButton.setBackground(new java.awt.Color(51, 51, 51));
+        addRecipeButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        addRecipeButton.setForeground(new java.awt.Color(204, 204, 255));
+        addRecipeButton.setText("Add Recipe");
+        addRecipeButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addRecipeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addRecipeButtonActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 90, 30));
+        jPanel7.add(addRecipeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 90, 30));
 
         jSplitPane1.setLeftComponent(jPanel7);
 
@@ -353,10 +364,24 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void refreshList(){
+        DefaultListModel<Recipe> itemModel = new DefaultListModel<>();
+//        myRecipes.setModel(itemModel);
+        try {
+            this.cookBook.getRecipeDB().forEach(rec -> {
+                System.out.println(rec.getRecipeName());
+                itemModel.addElement(rec);
+            });
+        } catch (Exception e) {
+            System.out.println("EXXPP"+e);
+        }
+    }
+    private void addRecipeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRecipeButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+        jSplitPane1.setRightComponent(new AddRecipe(this.cookBook));
+        
+    }//GEN-LAST:event_addRecipeButtonActionPerformed
+    
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuButtonActionPerformed
@@ -400,11 +425,13 @@ public class Home extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Home().setVisible(true);
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addRecipeButton;
     private javax.swing.JLabel category;
     private javax.swing.JLabel dateAdded1;
     private javax.swing.JLabel description;
@@ -412,7 +439,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel email;
     private javax.swing.JCheckBox glutenFree;
     private javax.swing.JLabel imagePath;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -422,8 +448,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -436,8 +460,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
@@ -446,8 +468,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel name;
     private javax.swing.JLabel numItems;
     private javax.swing.JLabel phone;
-    private javax.swing.JLabel recipeTitle;
-    private javax.swing.JLabel recipeTitle1;
     private javax.swing.JLabel recipeTitleMain;
     private javax.swing.JLabel servingSizee;
     private javax.swing.JLabel usename;

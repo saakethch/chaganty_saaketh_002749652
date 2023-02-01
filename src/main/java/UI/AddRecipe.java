@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
 package UI;
 
 import Model.Chef;
@@ -5,24 +9,20 @@ import Model.CookBook;
 import Model.Recipe;
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 /**
  *
  * @author 15512
  */
-public class AddRecipe extends javax.swing.JFrame {
+public class AddRecipe extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewRecipe
+     * Creates new form AddRecipePanel
      */
     private CookBook cookBook;
-    private Recipe recipe;
 
-    public AddRecipe() {
+    public AddRecipe(CookBook cookBook) {
         initComponents();
+        this.cookBook = cookBook;
     }
 
     /**
@@ -34,10 +34,9 @@ public class AddRecipe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        recipeName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         category = new javax.swing.JTextField();
-        recipeName = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         servingSize = new javax.swing.JTextField();
@@ -51,11 +50,6 @@ public class AddRecipe extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         numItems = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         chefEmail = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         chefln = new javax.swing.JTextField();
@@ -67,21 +61,10 @@ public class AddRecipe extends javax.swing.JFrame {
         chefPhone = new javax.swing.JTextField();
         chefUsername = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
+        addRecipeButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 204, 0));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
-
-        jLabel5.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Recipe Name");
-
-        category.setBackground(new java.awt.Color(51, 51, 51));
-        category.setForeground(new java.awt.Color(255, 255, 255));
-        category.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        setBackground(new java.awt.Color(51, 51, 51));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         recipeName.setBackground(new java.awt.Color(51, 51, 51));
         recipeName.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,26 +74,43 @@ public class AddRecipe extends javax.swing.JFrame {
                 recipeNameActionPerformed(evt);
             }
         });
+        add(recipeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 149, -1));
+
+        jLabel5.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Recipe Name");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 25, -1, -1));
+
+        category.setBackground(new java.awt.Color(51, 51, 51));
+        category.setForeground(new java.awt.Color(255, 255, 255));
+        category.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(category, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 149, -1));
 
         jLabel10.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Description :");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 110, 87, -1));
 
         jLabel6.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Serving Size");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 49, -1, -1));
 
         servingSize.setBackground(new java.awt.Color(51, 51, 51));
         servingSize.setForeground(new java.awt.Color(255, 255, 255));
         servingSize.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(servingSize, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 149, -1));
+        add(difficultyLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 110, -1));
 
         jLabel11.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Difficulty");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 62, -1));
 
         recipeImage.setBackground(new java.awt.Color(51, 51, 51));
         recipeImage.setForeground(new java.awt.Color(255, 255, 255));
         recipeImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(recipeImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 111, -1));
 
         desc.setBackground(new java.awt.Color(51, 51, 51));
         desc.setColumns(20);
@@ -118,6 +118,8 @@ public class AddRecipe extends javax.swing.JFrame {
         desc.setRows(5);
         desc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
         jScrollPane1.setViewportView(desc);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 134, 276, 160));
 
         glutenFree.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         glutenFree.setForeground(new java.awt.Color(255, 255, 255));
@@ -127,98 +129,52 @@ public class AddRecipe extends javax.swing.JFrame {
                 glutenFreeActionPerformed(evt);
             }
         });
+        add(glutenFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Recipe Image at ");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("No. of Ingredients");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Category");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 73, -1, -1));
 
         numItems.setBackground(new java.awt.Color(51, 51, 51));
         numItems.setForeground(new java.awt.Color(255, 255, 255));
         numItems.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
-
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-
-        jLabel13.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel13.setText("CookBook");
-
-        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("New Recipe");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(250, 250, 250))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(289, 289, 289))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(204, 204, 255));
-        jButton1.setText("Add Recipe");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setBackground(new java.awt.Color(51, 51, 51));
-        jButton2.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 204, 255));
-        jButton2.setText("Back to Menu");
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        add(numItems, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 36, -1));
 
         chefEmail.setBackground(new java.awt.Color(51, 51, 51));
         chefEmail.setForeground(new java.awt.Color(255, 255, 255));
         chefEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(chefEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 149, -1));
 
         jLabel14.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Email");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, -1, -1));
 
         chefln.setBackground(new java.awt.Color(51, 51, 51));
         chefln.setForeground(new java.awt.Color(255, 255, 255));
         chefln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(chefln, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 149, -1));
 
         jLabel7.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Last name");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("First name");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, -1));
 
         cheffn.setBackground(new java.awt.Color(51, 51, 51));
         cheffn.setForeground(new java.awt.Color(255, 255, 255));
@@ -228,189 +184,72 @@ public class AddRecipe extends javax.swing.JFrame {
                 cheffnActionPerformed(evt);
             }
         });
+        add(cheffn, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 149, -1));
 
         jLabel16.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(204, 204, 255));
         jLabel16.setText("Chef's Details");
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 131, -1));
 
         jLabel17.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Phone");
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
 
         chefPhone.setBackground(new java.awt.Color(51, 51, 51));
         chefPhone.setForeground(new java.awt.Color(255, 255, 255));
         chefPhone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(chefPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 149, -1));
 
         chefUsername.setBackground(new java.awt.Color(51, 51, 51));
         chefUsername.setForeground(new java.awt.Color(255, 255, 255));
         chefUsername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(chefUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 149, -1));
 
         jLabel18.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Username");
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(recipeName, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(servingSize)
-                            .addComponent(category)))
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 77, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(recipeImage, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(numItems, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(glutenFree)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(difficultyLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel18))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(chefUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(chefPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(cheffn)
-                                        .addComponent(chefln)
-                                        .addComponent(chefEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(recipeName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(recipeImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(servingSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(numItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)
-                            .addComponent(difficultyLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(jLabel9)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel10))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(glutenFree)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel16)
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel14))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel15)
-                                    .addComponent(cheffn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(chefln, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chefEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel17)
-                            .addComponent(chefPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18)
-                            .addComponent(chefUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 16, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        pack();
+        addRecipeButton1.setBackground(new java.awt.Color(204, 255, 204));
+        addRecipeButton1.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        addRecipeButton1.setForeground(new java.awt.Color(51, 51, 51));
+        addRecipeButton1.setText("Add Recipe");
+        addRecipeButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addRecipeButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addRecipeButton1ActionPerformed(evt);
+            }
+        });
+        add(addRecipeButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 100, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void recipeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recipeNameActionPerformed
         // TODO add your handling code here:
-        if (category.getText().trim().length() == 0 ||
-                desc.getText().trim().length() == 0 ||
-                recipeImage.getText().trim().length() == 0 ||
-                difficultyLevel.getValue() == 0 ||
-                numItems.getText().trim().length() == 0 ||
-                recipeName.getText().trim().length() == 0 ||
-                servingSize.getText().trim().length() == 0 ||
-                chefEmail.getText().trim().length() == 0 ||
-                cheffn.getText().trim().length() == 0 ||
-                chefln.getText().trim().length() == 0 ||
-                chefPhone.getText().trim().length() == 0 ||
-                chefUsername.getText().trim().length() == 0 ){
+    }//GEN-LAST:event_recipeNameActionPerformed
+
+    private void glutenFreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_glutenFreeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_glutenFreeActionPerformed
+
+    private void cheffnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cheffnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cheffnActionPerformed
+
+    private void addRecipeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRecipeButton1ActionPerformed
+        // TODO add your handling code here:
+        if (category.getText().trim().length() == 0
+                || desc.getText().trim().length() == 0
+                || recipeImage.getText().trim().length() == 0
+                || difficultyLevel.getValue() == 0
+                || numItems.getText().trim().length() == 0
+                || recipeName.getText().trim().length() == 0
+                || servingSize.getText().trim().length() == 0
+                || chefEmail.getText().trim().length() == 0
+                || cheffn.getText().trim().length() == 0
+                || chefln.getText().trim().length() == 0
+                || chefPhone.getText().trim().length() == 0
+                || chefUsername.getText().trim().length() == 0) {
             JOptionPane.showMessageDialog(null, "Empty values are not accepted.");
         }
 
@@ -435,62 +274,12 @@ public class AddRecipe extends javax.swing.JFrame {
 
         this.cookBook.addToRecipeDB(recipe);
         JOptionPane.showMessageDialog(null, "Added Recipe");
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+//        new Home(this.cookBook);
+    }//GEN-LAST:event_addRecipeButton1ActionPerformed
 
-    private void glutenFreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_glutenFreeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_glutenFreeActionPerformed
-
-    private void recipeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recipeNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recipeNameActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void cheffnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cheffnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cheffnActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddRecipe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddRecipe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddRecipe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddRecipe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddRecipe().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addRecipeButton1;
     private javax.swing.JTextField category;
     private javax.swing.JTextField chefEmail;
     private javax.swing.JTextField chefPhone;
@@ -500,13 +289,9 @@ public class AddRecipe extends javax.swing.JFrame {
     private javax.swing.JTextArea desc;
     private javax.swing.JSlider difficultyLevel;
     private javax.swing.JCheckBox glutenFree;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -517,8 +302,6 @@ public class AddRecipe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField numItems;
     private javax.swing.JTextField recipeImage;
