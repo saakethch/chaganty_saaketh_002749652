@@ -7,6 +7,7 @@ package UI;
 import Model.Chef;
 import Model.CookBook;
 import Model.Recipe;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,7 +25,6 @@ public class AddRecipe extends javax.swing.JPanel {
         initComponents();
         this.recipe = recipe;
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,7 +62,7 @@ public class AddRecipe extends javax.swing.JPanel {
         chefPhone = new javax.swing.JTextField();
         chefUsername = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        addRecipeButton1 = new javax.swing.JButton();
+        addRecipeButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -212,17 +212,17 @@ public class AddRecipe extends javax.swing.JPanel {
         jLabel18.setText("Username");
         add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, -1, -1));
 
-        addRecipeButton1.setBackground(new java.awt.Color(204, 255, 204));
-        addRecipeButton1.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        addRecipeButton1.setForeground(new java.awt.Color(51, 51, 51));
-        addRecipeButton1.setText("Add Recipe");
-        addRecipeButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addRecipeButton1.addActionListener(new java.awt.event.ActionListener() {
+        addRecipeButton.setBackground(new java.awt.Color(204, 255, 204));
+        addRecipeButton.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        addRecipeButton.setForeground(new java.awt.Color(51, 51, 51));
+        addRecipeButton.setText("Add Recipe");
+        addRecipeButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addRecipeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addRecipeButton1ActionPerformed(evt);
+                addRecipeButtonActionPerformed(evt);
             }
         });
-        add(addRecipeButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 100, -1));
+        add(addRecipeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 100, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void recipeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recipeNameActionPerformed
@@ -237,51 +237,62 @@ public class AddRecipe extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cheffnActionPerformed
 
-    private void addRecipeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRecipeButton1ActionPerformed
+    private void addRecipeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRecipeButtonActionPerformed
         // TODO add your handling code here:
-        if (category.getText().trim().length() == 0
-                || desc.getText().trim().length() == 0
-                || recipeImage.getText().trim().length() == 0
-                || difficultyLevel.getValue() == 0
-                || numItems.getText().trim().length() == 0
-                || recipeName.getText().trim().length() == 0
-                || servingSize.getText().trim().length() == 0
-                || chefEmail.getText().trim().length() == 0
-                || cheffn.getText().trim().length() == 0
-                || chefln.getText().trim().length() == 0
-                || chefPhone.getText().trim().length() == 0
-                || chefUsername.getText().trim().length() == 0) {
+        if (desc.getText().trim().length() == 0
+            || category.getText().trim().length() == 0
+            || recipeImage.getText().trim().length() == 0
+            || difficultyLevel.getValue() == 0
+            || numItems.getText().trim().length() == 0
+            || recipeName.getText().trim().length() == 0
+            || servingSize.getText().trim().length() == 0
+            || Integer.parseInt(servingSize.getText().trim())< 0
+            || Integer.parseInt(numItems.getText().trim())< 0
+            || chefEmail.getText().trim().length() == 0
+            || cheffn.getText().trim().length() == 0
+            || chefln.getText().trim().length() == 0
+            || chefPhone.getText().trim().length() == 0
+            || chefPhone.getText().trim().length() < 9
+            || chefUsername.getText().trim().length() == 0) {
             JOptionPane.showMessageDialog(null, "Empty values are not accepted.");
-        }else{
+        } else {
+            if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", chefEmail.getText()))) {
+                JOptionPane.showMessageDialog(null, "Invalid Email format");
+            } else {
 
-//        Recipe recipe = new Recipe();
-        Chef chefDetails = new Chef();
-        recipe.setCategory(category.getText());
-        recipe.setDescription(desc.getText());
-        recipe.setDifficulty(Double.parseDouble(String.valueOf(difficultyLevel.getValue())));
-        recipe.setGlutenFree(glutenFree.isSelected());
-        recipe.setNumOfItems(Integer.valueOf(numItems.getText()));
-        recipe.setRecipeImage(recipeImage.getText());
-        recipe.setRecipeName(recipeName.getText());
-        recipe.setServingSize(Integer.valueOf(servingSize.getText()));
+//                if (!(Pattern.matches("[A-Za-z]", cheffn.getText())) || !(Pattern.matches("[A-Za-z]", chefln.getText()))) {
+//                    JOptionPane.showMessageDialog(null, "Invalid Name");
+//                }else{
+                    //        Recipe recipe = new Recipe();
+                    Chef chefDetails = new Chef();
+                    recipe.setCategory(category.getText());
+                    recipe.setDescription(desc.getText());
+                    recipe.setDifficulty(Double.parseDouble(String.valueOf(difficultyLevel.getValue())));
+                    recipe.setGlutenFree(glutenFree.isSelected());
+                    recipe.setNumOfItems(Integer.valueOf(numItems.getText()));
+                    recipe.setRecipeImage(recipeImage.getText());
+                    recipe.setRecipeName(recipeName.getText());
+                    recipe.setServingSize(Integer.valueOf(servingSize.getText()));
 
-        chefDetails.setEmail(chefEmail.getText());
-        chefDetails.setFirstName(cheffn.getText());
-        chefDetails.setLastName(chefln.getText());
-        chefDetails.setPhone(chefPhone.getText());
-        chefDetails.setUsername(chefUsername.getText());
+                    chefDetails.setEmail(chefEmail.getText());
+                    chefDetails.setFirstName(cheffn.getText());
+                    chefDetails.setLastName(chefln.getText());
+                    chefDetails.setPhone(chefPhone.getText());
+                    chefDetails.setUsername(chefUsername.getText());
 
-        recipe.setChefDetails(chefDetails);
+                    recipe.setChefDetails(chefDetails);
 
-        this.recipe = recipe;
-        JOptionPane.showMessageDialog(null, "Added Recipe");
-//        new Home(recipe);
+                    this.recipe = recipe;
+                    JOptionPane.showMessageDialog(null, "Added Recipe");
+                    //        new Home(recipe);
+                }
+//            }
         }
-    }//GEN-LAST:event_addRecipeButton1ActionPerformed
+    }//GEN-LAST:event_addRecipeButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addRecipeButton1;
+    private javax.swing.JButton addRecipeButton;
     private javax.swing.JTextField category;
     private javax.swing.JTextField chefEmail;
     private javax.swing.JTextField chefPhone;

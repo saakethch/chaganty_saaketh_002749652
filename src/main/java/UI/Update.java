@@ -4,7 +4,10 @@
  */
 package UI;
 
+import Model.Chef;
 import Model.Recipe;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,15 +18,17 @@ public class Update extends javax.swing.JPanel {
     /**
      * Creates new form ViewMain
      */
-     private Recipe recipe;
+    private Recipe recipe;
+
     public Update(Recipe rec) {
         initComponents();
         this.recipe = rec;
         display(rec);
     }
-public Update() {
+
+    public Update() {
         initComponents();
-        
+
     }
 
     /**
@@ -35,352 +40,304 @@ public Update() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        recipeName = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        category = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        servingSize = new javax.swing.JTextField();
+        difficultyLevel = new javax.swing.JSlider();
         jLabel11 = new javax.swing.JLabel();
+        recipeImage = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        desc = new javax.swing.JTextArea();
         glutenFree = new javax.swing.JCheckBox();
         jLabel12 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        username = new javax.swing.JLabel();
-        imagePath = new javax.swing.JLabel();
-        numItems = new javax.swing.JLabel();
-        description = new javax.swing.JLabel();
-        servingSizee = new javax.swing.JLabel();
-        category = new javax.swing.JLabel();
-        difficultyLevel = new javax.swing.JProgressBar();
-        jLabel5 = new javax.swing.JLabel();
-        dateAdded = new javax.swing.JLabel();
+        numItems = new javax.swing.JTextField();
+        chefEmail = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        email = new javax.swing.JLabel();
+        chefln = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        name = new javax.swing.JLabel();
+        cheffn = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        usename = new javax.swing.JLabel();
-        phone = new javax.swing.JLabel();
+        chefPhone = new javax.swing.JTextField();
+        chefUsername = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        update = new javax.swing.JButton();
-        recipeTitle = new javax.swing.JLabel();
-        lastName = new javax.swing.JLabel();
+        updateButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(204, 204, 255));
+        recipeName.setBackground(new java.awt.Color(51, 51, 51));
+        recipeName.setForeground(new java.awt.Color(255, 255, 255));
+        recipeName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        recipeName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recipeNameActionPerformed(evt);
+            }
+        });
+        add(recipeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 149, -1));
+
+        jLabel5.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Recipe Name");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 25, -1, -1));
+
+        category.setBackground(new java.awt.Color(51, 51, 51));
+        category.setForeground(new java.awt.Color(255, 255, 255));
+        category.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(category, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 149, -1));
+
+        jLabel10.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Description :");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 110, 87, -1));
 
         jLabel6.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Serving Size");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 49, -1, -1));
+
+        servingSize.setBackground(new java.awt.Color(51, 51, 51));
+        servingSize.setForeground(new java.awt.Color(255, 255, 255));
+        servingSize.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(servingSize, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 149, -1));
+        add(difficultyLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 110, -1));
 
         jLabel11.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Difficulty");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 62, -1));
+
+        recipeImage.setBackground(new java.awt.Color(51, 51, 51));
+        recipeImage.setForeground(new java.awt.Color(255, 255, 255));
+        recipeImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(recipeImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 111, -1));
+
+        desc.setBackground(new java.awt.Color(51, 51, 51));
+        desc.setColumns(20);
+        desc.setForeground(new java.awt.Color(255, 255, 255));
+        desc.setRows(5);
+        desc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        jScrollPane1.setViewportView(desc);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 134, 276, 160));
 
         glutenFree.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         glutenFree.setForeground(new java.awt.Color(255, 255, 255));
-        glutenFree.setSelected(true);
         glutenFree.setText("Gluten Free");
         glutenFree.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 glutenFreeActionPerformed(evt);
             }
         });
+        add(glutenFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Recipe Image at ");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("No. of Ingredients");
-
-        jLabel4.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Logged by @");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Category");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 73, -1, -1));
 
-        username.setFont(new java.awt.Font("Rockwell", 2, 18)); // NOI18N
-        username.setForeground(new java.awt.Color(204, 204, 255));
-        username.setText("username");
-
-        imagePath.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        imagePath.setForeground(new java.awt.Color(255, 255, 255));
-        imagePath.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
-
-        numItems.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        numItems.setBackground(new java.awt.Color(51, 51, 51));
         numItems.setForeground(new java.awt.Color(255, 255, 255));
         numItems.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(numItems, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 36, -1));
 
-        description.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        description.setForeground(new java.awt.Color(255, 255, 255));
-        description.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
-
-        servingSizee.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        servingSizee.setForeground(new java.awt.Color(255, 255, 255));
-        servingSizee.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
-
-        category.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        category.setForeground(new java.awt.Color(255, 255, 255));
-        category.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
-
-        difficultyLevel.setForeground(new java.awt.Color(204, 204, 255));
-        difficultyLevel.setValue(25);
-
-        jLabel5.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("On");
-
-        dateAdded.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        dateAdded.setForeground(new java.awt.Color(204, 204, 255));
-        dateAdded.setText("29th Jan 2023");
+        chefEmail.setBackground(new java.awt.Color(51, 51, 51));
+        chefEmail.setForeground(new java.awt.Color(255, 255, 255));
+        chefEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(chefEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 149, -1));
 
         jLabel14.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Username");
+        jLabel14.setText("Email");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, -1, -1));
 
-        email.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        email.setForeground(new java.awt.Color(255, 255, 255));
-        email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        chefln.setBackground(new java.awt.Color(51, 51, 51));
+        chefln.setForeground(new java.awt.Color(255, 255, 255));
+        chefln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(chefln, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 149, -1));
 
-        jLabel15.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel15.setText("Chef's Details");
+        jLabel7.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Last name");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
 
-        name.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        name.setForeground(new java.awt.Color(255, 255, 255));
-        name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        jLabel15.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("First name");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, -1));
 
-        jLabel16.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Phone");
+        cheffn.setBackground(new java.awt.Color(51, 51, 51));
+        cheffn.setForeground(new java.awt.Color(255, 255, 255));
+        cheffn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        cheffn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cheffnActionPerformed(evt);
+            }
+        });
+        add(cheffn, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 149, -1));
+
+        jLabel16.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel16.setText("Chef's Details");
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 131, -1));
 
         jLabel17.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("Email");
+        jLabel17.setText("Phone");
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
 
-        usename.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        usename.setForeground(new java.awt.Color(255, 255, 255));
-        usename.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        chefPhone.setBackground(new java.awt.Color(51, 51, 51));
+        chefPhone.setForeground(new java.awt.Color(255, 255, 255));
+        chefPhone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(chefPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 149, -1));
 
-        phone.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        phone.setForeground(new java.awt.Color(255, 255, 255));
-        phone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        chefUsername.setBackground(new java.awt.Color(51, 51, 51));
+        chefUsername.setForeground(new java.awt.Color(255, 255, 255));
+        chefUsername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        add(chefUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 149, -1));
 
         jLabel18.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Name");
+        jLabel18.setText("Username");
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, -1, -1));
 
-        update.setBackground(new java.awt.Color(51, 51, 51));
-        update.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        update.setForeground(new java.awt.Color(204, 255, 204));
-        update.setText("Update Recipe");
-        update.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        update.addActionListener(new java.awt.event.ActionListener() {
+        updateButton.setBackground(new java.awt.Color(204, 255, 204));
+        updateButton.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(51, 51, 51));
+        updateButton.setText("Update Recipe");
+        updateButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateActionPerformed(evt);
+                updateButtonActionPerformed(evt);
             }
         });
-
-        recipeTitle.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        recipeTitle.setForeground(new java.awt.Color(255, 255, 255));
-        recipeTitle.setText("Recipe Title");
-
-        lastName.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        lastName.setForeground(new java.awt.Color(255, 255, 255));
-        lastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(1, 1, 1)
-                                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
-                                .addComponent(jLabel5)
-                                .addGap(11, 11, 11)
-                                .addComponent(dateAdded, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(207, 207, 207)
-                                .addComponent(jLabel6)
-                                .addGap(41, 41, 41)
-                                .addComponent(servingSizee, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addGap(42, 42, 42)
-                                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel9)
-                                .addGap(58, 58, 58)
-                                .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addGap(43, 43, 43)
-                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(127, 127, 127)
-                                .addComponent(jLabel12)
-                                .addGap(11, 11, 11)
-                                .addComponent(imagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(14, 14, 14)
-                                .addComponent(usename, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(127, 127, 127)
-                                .addComponent(jLabel8)
-                                .addGap(4, 4, 4)
-                                .addComponent(numItems, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addGap(40, 40, 40)
-                                .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(200, 200, 200)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
-                                .addComponent(difficultyLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(glutenFree))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77)
-                                .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(recipeTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(recipeTitle)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(username)
-                    .addComponent(jLabel5)
-                    .addComponent(dateAdded))
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(servingSizee, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18)
-                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(imagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addComponent(usename, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(numItems, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
-                    .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel10))
-                    .addComponent(jLabel11)
-                    .addComponent(difficultyLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(glutenFree))
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(update))))
-        );
+        add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 100, -1));
     }// </editor-fold>//GEN-END:initComponents
-public void display(Recipe rec){
-        String firstname = rec.getChefDetails().getFirstName();
-        lastName.setText(firstname);
-        
-        String emai = rec.getChefDetails().getEmail();
-        email.setText(emai);
-        
-        String usernam = rec.getChefDetails().getUsername();
-        usename.setText(usernam);
-        
-        String lastname = rec.getChefDetails().getLastName();
-        name.setText(lastname);
-        
-        String phon = rec.getChefDetails().getPhone();
-        phone.setText(phon);
-        
-        String cat = rec.getCategory();
-        category.setText(cat);
-        
-        String desc = rec.getDescription();
-        description.setText(desc);
-        
-        String rimg = rec.getRecipeImage();
-        imagePath.setText(rimg);
-        
-        String rname = rec.getRecipeName();
-        recipeTitle.setText(rname);
-        
-        Double diff = rec.getDifficulty();
-        difficultyLevel.setValue((int) Double.parseDouble(diff.toString()));
-        
-        Boolean gf = rec.getGlutenFree();
-        glutenFree.setSelected(gf);
-        
-        int numI = rec.getNumOfItems();
-        
-        numItems.setText(String.valueOf(numI));
-        
-        int ss = rec.getServingSize();
-        servingSizee.setText(String.valueOf(ss));
-    }
+
+    private void recipeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recipeNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recipeNameActionPerformed
+
     private void glutenFreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_glutenFreeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_glutenFreeActionPerformed
 
-    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+    private void cheffnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cheffnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_updateActionPerformed
+    }//GEN-LAST:event_cheffnActionPerformed
 
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        if (category.getText().trim().length() == 0
+                || desc.getText().trim().length() == 0
+                || recipeImage.getText().trim().length() == 0
+                || difficultyLevel.getValue() == 0
+                || numItems.getText().trim().length() == 0
+                || recipeName.getText().trim().length() == 0
+                || servingSize.getText().trim().length() == 0
+                || chefEmail.getText().trim().length() == 0
+                || cheffn.getText().trim().length() == 0
+                || chefln.getText().trim().length() == 0
+                || chefPhone.getText().trim().length() == 0
+                || chefUsername.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Empty values are not accepted.");
+        } else {
+            if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", chefEmail.getText()))) {
+                JOptionPane.showMessageDialog(null, "Invalid Email format");
+            } else {
+                //        Recipe recipe = new Recipe();
+                Chef chefDetails = new Chef();
+                recipe.setCategory(category.getText());
+                recipe.setDescription(desc.getText());
+                recipe.setDifficulty(Double.parseDouble(String.valueOf(difficultyLevel.getValue())));
+                recipe.setGlutenFree(glutenFree.isSelected());
+                recipe.setNumOfItems(Integer.valueOf(numItems.getText()));
+                recipe.setRecipeImage(recipeImage.getText());
+                recipe.setRecipeName(recipeName.getText());
+                recipe.setServingSize(Integer.valueOf(servingSize.getText()));
+
+                chefDetails.setEmail(chefEmail.getText());
+                chefDetails.setFirstName(cheffn.getText());
+                chefDetails.setLastName(chefln.getText());
+                chefDetails.setPhone(chefPhone.getText());
+                chefDetails.setUsername(chefUsername.getText());
+
+                recipe.setChefDetails(chefDetails);
+
+                this.recipe = recipe;
+                JOptionPane.showMessageDialog(null, "Updated Recipe");
+                //        new Home(recipe);
+            }
+        }
+    }//GEN-LAST:event_updateButtonActionPerformed
+    public void display(Recipe rec) {
+        String firstname = rec.getChefDetails().getFirstName();
+        cheffn.setText(firstname);
+
+        String emai = rec.getChefDetails().getEmail();
+        chefEmail.setText(emai);
+
+        String usernam = rec.getChefDetails().getUsername();
+        chefUsername.setText(usernam);
+
+        String lastname = rec.getChefDetails().getLastName();
+        chefln.setText(lastname);
+
+        String phon = rec.getChefDetails().getPhone();
+        chefPhone.setText(phon);
+
+        String cat = rec.getCategory();
+        category.setText(cat);
+
+        String descd = rec.getDescription();
+        desc.setText(descd);
+
+        String rimg = rec.getRecipeImage();
+        recipeImage.setText(rimg);
+
+        String rname = rec.getRecipeName();
+        recipeName.setText(rname);
+
+        Double diff = rec.getDifficulty();
+        difficultyLevel.setValue((int) Double.parseDouble(diff.toString()));
+
+        Boolean gf = rec.getGlutenFree();
+        glutenFree.setSelected(gf);
+
+        int numI = rec.getNumOfItems();
+
+        numItems.setText(String.valueOf(numI));
+
+        int ss = rec.getServingSize();
+        servingSize.setText(String.valueOf(ss));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel category;
-    private javax.swing.JLabel dateAdded;
-    private javax.swing.JLabel description;
-    private javax.swing.JProgressBar difficultyLevel;
-    private javax.swing.JLabel email;
+    private javax.swing.JTextField category;
+    private javax.swing.JTextField chefEmail;
+    private javax.swing.JTextField chefPhone;
+    private javax.swing.JTextField chefUsername;
+    private javax.swing.JTextField cheffn;
+    private javax.swing.JTextField chefln;
+    private javax.swing.JTextArea desc;
+    private javax.swing.JSlider difficultyLevel;
     private javax.swing.JCheckBox glutenFree;
-    private javax.swing.JLabel imagePath;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -389,19 +346,16 @@ public void display(Recipe rec){
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel lastName;
-    private javax.swing.JLabel name;
-    private javax.swing.JLabel numItems;
-    private javax.swing.JLabel phone;
-    private javax.swing.JLabel recipeTitle;
-    private javax.swing.JLabel servingSizee;
-    private javax.swing.JButton update;
-    private javax.swing.JLabel usename;
-    private javax.swing.JLabel username;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField numItems;
+    private javax.swing.JTextField recipeImage;
+    private javax.swing.JTextField recipeName;
+    private javax.swing.JTextField servingSize;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }
