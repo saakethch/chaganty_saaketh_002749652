@@ -18,12 +18,13 @@ public class AddRecipe extends javax.swing.JPanel {
     /**
      * Creates new form AddRecipePanel
      */
-    private CookBook cookBook;
+    private Recipe recipe;
 
-    public AddRecipe(CookBook cookBook) {
+    public AddRecipe(Recipe recipe) {
         initComponents();
-        this.cookBook = cookBook;
+        this.recipe = recipe;
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -251,9 +252,9 @@ public class AddRecipe extends javax.swing.JPanel {
                 || chefPhone.getText().trim().length() == 0
                 || chefUsername.getText().trim().length() == 0) {
             JOptionPane.showMessageDialog(null, "Empty values are not accepted.");
-        }
+        }else{
 
-        Recipe recipe = new Recipe();
+//        Recipe recipe = new Recipe();
         Chef chefDetails = new Chef();
         recipe.setCategory(category.getText());
         recipe.setDescription(desc.getText());
@@ -272,9 +273,10 @@ public class AddRecipe extends javax.swing.JPanel {
 
         recipe.setChefDetails(chefDetails);
 
-        this.cookBook.addToRecipeDB(recipe);
+        this.recipe = recipe;
         JOptionPane.showMessageDialog(null, "Added Recipe");
-//        new Home(this.cookBook);
+//        new Home(recipe);
+        }
     }//GEN-LAST:event_addRecipeButton1ActionPerformed
 
 
