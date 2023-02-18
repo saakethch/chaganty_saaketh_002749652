@@ -75,6 +75,11 @@ public class AddInsurancePlan extends javax.swing.JPanel {
             }
         });
 
+        costPerMonth.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                costPerMonthFocusLost(evt);
+            }
+        });
         costPerMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 costPerMonthActionPerformed(evt);
@@ -217,7 +222,7 @@ public class AddInsurancePlan extends javax.swing.JPanel {
         
         float costPerMonthVar = Float.parseFloat(costPerMonth.getText());
         float costPerAnnum = costPerMonthVar*12;
-        InsurancePlan ip = new InsurancePlan(id, planName, costPerMonth, costPerAnnum);
+        InsurancePlan ip = new InsurancePlan(id, planNameVar, costPerMonthVar, costPerAnnum);
         this.business.addToInsurancePlansDirectory(ip);
         
         JOptionPane.showMessageDialog(null, "Created Insurance Plan");
@@ -229,8 +234,13 @@ public class AddInsurancePlan extends javax.swing.JPanel {
 
     private void costPerYearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_costPerYearFocusLost
         // TODO add your handling code here:
-        costPerYear.setText(String.valueOf(Float.parseFloat (costPerMonth.getText())*12));
+//        costPerYear.setText(String.valueOf(Float.parseFloat(costPerMonth.getText())*12));
     }//GEN-LAST:event_costPerYearFocusLost
+
+    private void costPerMonthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_costPerMonthFocusLost
+        // TODO add your handling code here:
+        costPerYear.setText(String.valueOf(Float.parseFloat(costPerMonth.getText())*12));
+    }//GEN-LAST:event_costPerMonthFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

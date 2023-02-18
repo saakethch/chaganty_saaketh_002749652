@@ -16,7 +16,6 @@ public class Business {
 public Business(){
             this.applicantsDirectory = new ArrayList<Applicant>();
             this.insurancePlansDirectory = new ArrayList<InsurancePlan>();
-               
         }
     public ArrayList<InsurancePlan> getInsurancePlansDirectory() {
         return insurancePlansDirectory;

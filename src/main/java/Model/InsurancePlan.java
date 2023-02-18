@@ -12,12 +12,16 @@ import java.awt.TextField;
  */
 public class InsurancePlan {
 
-    public InsurancePlan(int id, TextField planName1, TextField costPerMonth1, float costPerAnnum) {
+    private String planName;
+    private int planId;
+    private float costPerMonth;
+    private float costPerYear;
+    public InsurancePlan(int planId, String planName, float costPerMonth, float costPerYear) {
+        this.planName = planName;
+        this.planId = planId;
+        this.costPerMonth = costPerMonth;
+        this.costPerYear = costPerYear;
     }
-    String planName;
-    int planId;
-    int costPerMonth;
-    int costPerYear;
 
     public String getPlanName() {
         return planName;
@@ -35,19 +39,19 @@ public class InsurancePlan {
         this.planId = planId;
     }
 
-    public int getCostPerMonth() {
+    public float getCostPerMonth() {
         return costPerMonth;
     }
 
-    public void setCostPerMonth(int costPerMonth) {
+    public void setCostPerMonth(float costPerMonth) {
         this.costPerMonth = costPerMonth;
     }
 
-    public int getCostPerYear() {
+    public float getCostPerYear() {
         return costPerYear;
     }
 
-    public void setCostPerYear(int costPerYear) {
+    public void setCostPerYear(float costPerYear) {
         this.costPerYear = costPerYear;
     }
     

@@ -13,10 +13,33 @@ import java.util.ArrayList;
  */
 public class Pet {
 
+    private String petName;
+    private String petType;
+    private InsurancePlan ip;
+    private int petAge;
+    private Boolean isMale;
+    private Boolean isFemale;
+    private String breed;
+    private ArrayList<Vaccine> vaccinationHistory;
+
     public Pet(String petName, String petBreed, boolean isFemale, int petAge, String petType, InsurancePlan ip) {
+        this.petName = petName;
+        this.petAge = petAge;
+        this.ip = ip;
+        this.breed = petBreed;
+        this.petType = petType;
+        this.isFemale = isFemale;
+        this.isMale = !isFemale;
+        this.vaccinationHistory = new ArrayList<Vaccine>();
     }
-    String petName;
-    String petType;
+    
+    public InsurancePlan getIp() {
+        return ip;
+    }
+
+    public void setIp(InsurancePlan ip) {
+        this.ip = ip;
+    }
     public String getPetType() {
         return petType;
     }
@@ -24,12 +47,7 @@ public class Pet {
     public void setPetType(String petType) {
         this.petType = petType;
     }
-    int petAge;
-    Boolean isMale;
-    Boolean isFemale;
-    String breed;
-    ArrayList<Vaccine> vaccinationHistory;
-
+    
 
     public String getPetName() {
         return petName;
@@ -75,12 +93,9 @@ public class Pet {
         return vaccinationHistory;
     }
 
-    public void setVaccinationHistory(Vaccine vaccine) {
-        this.vaccinationHistory.add(vaccine);
-    }
 
     public void addToVaccinationHistory(Vaccine vaccine) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.vaccinationHistory.add(vaccine);
     }
     
 }

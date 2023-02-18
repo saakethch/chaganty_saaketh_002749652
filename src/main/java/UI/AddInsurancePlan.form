@@ -192,6 +192,7 @@
             </Component>
             <Component class="java.awt.TextField" name="costPerMonth">
               <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="costPerMonthFocusLost"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="costPerMonthActionPerformed"/>
               </Events>
             </Component>
