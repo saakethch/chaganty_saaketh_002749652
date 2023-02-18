@@ -4,11 +4,16 @@
  */
 package Model;
 
+import java.awt.TextField;
+
 /**
  *
  * @author 15512
  */
 public class InsurancePlan {
+
+    public InsurancePlan(int id, TextField planName1, TextField costPerMonth1, float costPerAnnum) {
+    }
     String planName;
     int planId;
     int costPerMonth;

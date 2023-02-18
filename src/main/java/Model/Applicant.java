@@ -11,18 +11,21 @@ import java.util.Date;
  * @author 15512
  */
 public class Applicant {
-    String applicationId;
+
+    public Applicant(int applicantID, String ownerFirstName, String ownerLastName, Date date, Pet pet1) {
+    }
+    int applicationId;
     String firstName;
     String lastName;
     Date applicationDate;
     Pet pet;
     InsurancePlan insurancePlanOpted;
 
-    public String getApplicationId() {
+    public int getApplicationId() {
         return applicationId;
     }
 
-    public void setApplicationId(String applicationId) {
+    public void setApplicationId(int applicationId) {
         this.applicationId = applicationId;
     }
 

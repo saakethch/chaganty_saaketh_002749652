@@ -4,6 +4,7 @@
  */
 package Model;
 
+import java.awt.TextField;
 import java.util.ArrayList;
 
 /**
@@ -11,12 +12,24 @@ import java.util.ArrayList;
  * @author 15512
  */
 public class Pet {
+
+    public Pet(String petName, String petBreed, boolean isFemale, int petAge, String petType, InsurancePlan ip) {
+    }
     String petName;
+    String petType;
+    public String getPetType() {
+        return petType;
+    }
+
+    public void setPetType(String petType) {
+        this.petType = petType;
+    }
     int petAge;
     Boolean isMale;
     Boolean isFemale;
     String breed;
     ArrayList<Vaccine> vaccinationHistory;
+
 
     public String getPetName() {
         return petName;
@@ -64,6 +77,10 @@ public class Pet {
 
     public void setVaccinationHistory(Vaccine vaccine) {
         this.vaccinationHistory.add(vaccine);
+    }
+
+    public void addToVaccinationHistory(Vaccine vaccine) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

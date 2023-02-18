@@ -5,6 +5,8 @@
 package UI;
 
 import Model.Business;
+import Model.InsurancePlan;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,8 +17,10 @@ public class AddInsurancePlan extends javax.swing.JPanel {
     /**
      * Creates new form AddInsurancePlann
      */
+    Business business;
     public AddInsurancePlan(Business business) {
         initComponents();
+        this.business = business;
     }
 
     /**
@@ -87,6 +91,12 @@ public class AddInsurancePlan extends javax.swing.JPanel {
         });
 
         costPerYear.setEditable(false);
+        costPerYear.setEnabled(false);
+        costPerYear.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                costPerYearFocusLost(evt);
+            }
+        });
         costPerYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 costPerYearActionPerformed(evt);
@@ -121,12 +131,12 @@ public class AddInsurancePlan extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(addInsurancePlan, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
+                .addContainerGap(63, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(planId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -158,36 +168,32 @@ public class AddInsurancePlan extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(148, 148, 148)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -205,11 +211,26 @@ public class AddInsurancePlan extends javax.swing.JPanel {
 
     private void addInsurancePlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addInsurancePlanActionPerformed
         // TODO add your handling code here:
+        // TODO add your handling code here:
+        int id = Integer.parseInt(planId.getText());
+        String planNameVar = planName.getText();
+        
+        float costPerMonthVar = Float.parseFloat(costPerMonth.getText());
+        float costPerAnnum = costPerMonthVar*12;
+        InsurancePlan ip = new InsurancePlan(id, planName, costPerMonth, costPerAnnum);
+        this.business.addToInsurancePlansDirectory(ip);
+        
+        JOptionPane.showMessageDialog(null, "Created Insurance Plan");
     }//GEN-LAST:event_addInsurancePlanActionPerformed
 
     private void costPerYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costPerYearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_costPerYearActionPerformed
+
+    private void costPerYearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_costPerYearFocusLost
+        // TODO add your handling code here:
+        costPerYear.setText(String.valueOf(Float.parseFloat (costPerMonth.getText())*12));
+    }//GEN-LAST:event_costPerYearFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

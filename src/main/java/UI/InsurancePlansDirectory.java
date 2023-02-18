@@ -5,6 +5,9 @@
 package UI;
 
 import Model.Business;
+import Model.InsurancePlan;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,10 +18,35 @@ public class InsurancePlansDirectory extends javax.swing.JPanel {
     /**
      * Creates new form InsurancePlansDirectoryy
      */
+    DefaultTableModel viewTableModel;
+    Business business;
+
+    
     public InsurancePlansDirectory(Business business) {
         initComponents();
+        displayPlans();
+        this.business = business;
+        this.viewTableModel = (DefaultTableModel) plans.getModel();
     }
+ public void displayPlans(){
+        ArrayList<InsurancePlan> insuranceDirectory = this.business.getInsurancePlansDirectory();
+        if (insuranceDirectory.size() > 0) {
+            // display
 
+            viewTableModel.setRowCount(0);
+            
+            for (InsurancePlan ip : insuranceDirectory) {
+                // number of columns in the table = 3 and row should be framed
+                Object row[] = new Object[5];
+                row[0] = ip.getPlanId();
+                row[1] = ip.getPlanName();
+                row[2] = ip.getCostPerMonth();
+                row[3] = ip.getCostPerYear();
+                // add the row to the table
+                viewTableModel.addRow(row);
+            }
+        } 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,7 +59,7 @@ public class InsurancePlansDirectory extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        applicantId = new javax.swing.JTextField();
+        planId = new javax.swing.JTextField();
         viewApplicant = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         deleteApplicant = new javax.swing.JButton();
@@ -46,7 +74,7 @@ public class InsurancePlansDirectory extends javax.swing.JPanel {
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        plans = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(204, 255, 204));
 
@@ -173,7 +201,7 @@ public class InsurancePlansDirectory extends javax.swing.JPanel {
                 .addGap(23, 23, 23))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        plans.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -181,10 +209,10 @@ public class InsurancePlansDirectory extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Plan ID", "Plan Name", "Cost Month", "Cost Year"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(plans);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -198,14 +226,15 @@ public class InsurancePlansDirectory extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(applicantId, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(viewApplicant)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                                .addComponent(planId, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(viewApplicant)
+                        .addGap(106, 106, 106)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
+                .addContainerGap(76, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2)
@@ -221,10 +250,10 @@ public class InsurancePlansDirectory extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(applicantId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(planId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
                         .addComponent(viewApplicant)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(51, Short.MAX_VALUE))
@@ -256,7 +285,6 @@ public class InsurancePlansDirectory extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField applicantId;
     private javax.swing.JButton deleteApplicant;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
@@ -272,7 +300,8 @@ public class InsurancePlansDirectory extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField planId;
+    private javax.swing.JTable plans;
     private javax.swing.JButton updateApplicant;
     private javax.swing.JButton viewApplicant;
     // End of variables declaration//GEN-END:variables
