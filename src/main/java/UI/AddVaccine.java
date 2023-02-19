@@ -8,6 +8,7 @@ import Model.Applicant;
 import Model.Business;
 import Model.Vaccine;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,48 +16,45 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author forumkaria
  */
-public
-        class AddVaccine extends javax.swing.JPanel {
-        Business business;
-        DefaultTableModel petsTable;
-        
+public class AddVaccine extends javax.swing.JPanel {
+
+    Business business;
+    DefaultTableModel petsTable;
+
     /**
      * Creates new form AddVaccineJPanel
      */
-    public
-            AddVaccine(Business b) {
+    public AddVaccine(Business b) {
         initComponents();
-        
+
         this.petsTable = (DefaultTableModel) pets.getModel();
         this.business = b;
         displayPets();
-        
+
     }
 
-    public void displayPets(){
-         ArrayList<Applicant> applicants = this.business.getApplicantsDirectory();
+    public void displayPets() {
+        ArrayList<Applicant> applicants = this.business.getApplicantsDirectory();
 
         if (applicants.size() > 0) {
             // display
 
             petsTable.setRowCount(0);
-            
+
             for (Applicant a : applicants) {
-              
-                
+
                 // number of columns in the table = 3 and row should be framed
-                
-                Object row[] = new Object[3];
+                Object row[] = new Object[4];
                 row[0] = a.getApplicationId();
                 row[1] = a.getPet().getPetName();
                 row[2] = a.getPet().getPetType();
-                row[3] = a.getPet().getVaccinationHistory().get(0).getVaccineId();
+                row[3] = String.valueOf(a.getPet().getVaccinationHistory().get(0).getVaccineId());
                 // add the row to the table
                 petsTable.addRow(row);
             }
-        } 
+        }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -166,17 +164,19 @@ public
 
     private void addVaccineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVaccineBtnActionPerformed
         // TODO add your handling code here:
-        
+
         int selectedRow = pets.getSelectedRow();
-        
-        Vaccine v = new Vaccine(vaccineNameTxt.getText(),courseCompletedCheckBox.isSelected(), (int) Math.random());
-        
-        Applicant a = this.business.findApplicantById(Integer.parseInt(String.valueOf(petsTable.getValueAt(selectedRow,0))));
-        
+        Random random = new Random();
+
+        Vaccine v = new Vaccine(vaccineNameTxt.getText(),
+                courseCompletedCheckBox.isSelected(), random.nextInt(100) + 1);
+
+        Applicant a = this.business.findApplicantById(Integer.parseInt(String.valueOf(petsTable.getValueAt(selectedRow, 0))));
+
         a.getPet().addToVaccinationHistory(v);
-        
+
         JOptionPane.showMessageDialog(null, "Added to Pet's Vaccination History");
-        
+
     }//GEN-LAST:event_addVaccineBtnActionPerformed
 
 

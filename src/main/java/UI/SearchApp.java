@@ -549,19 +549,18 @@ public class SearchApp extends javax.swing.JPanel {
         // TODO add your handling code here:
         boolean isUnique = this.business.checkIfApplicantIsUnique(Integer.parseInt(searchAppId.getText()));
 
-        if (isUnique) {
-             Applicant a = this.business.findApplicantById(Integer.parseInt(searchAppId.getText()));
-             appChoices.add(String.valueOf(a.getApplicationId()));
+        if (!isUnique) {
+            Applicant a = this.business.findApplicantById(Integer.parseInt(searchAppId.getText()));
+            appChoices.add(String.valueOf(a.getApplicationId()));
         } else {
             JOptionPane.showMessageDialog(null, "Id does not exist");
         }
-       
-        
-        
+
+
     }//GEN-LAST:event_searchIdActionPerformed
 
     public boolean genderSelection() {
-        if(isMale.getState()) {
+        if (isMale.getState()) {
             return false;
         } else {
             return true;
@@ -571,9 +570,9 @@ public class SearchApp extends javax.swing.JPanel {
     private void searchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchNameActionPerformed
         // TODO add your handling code here:
         ArrayList<Applicant> applicants = this.business.findApplicantByName(searchAppName.getText());
-        for(Applicant a: applicants){
+        for (Applicant a : applicants) {
             appChoices.add(String.valueOf(a.getApplicationId()));
-            }
+        }
     }//GEN-LAST:event_searchNameActionPerformed
 
     private void viewApplicantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewApplicantActionPerformed
@@ -590,7 +589,7 @@ public class SearchApp extends javax.swing.JPanel {
 
             petName.setText(p.getPetName());
             petAge.setText(String.valueOf(p.getPetAge()));
-            isMale.setState(!p.getIsMale());
+            isMale.setState(p.getIsMale());
             isFemale.setState(p.getIsFemale());
             petType.setText(p.getPetType());
             petBreed.setText(p.getBreed());
@@ -599,7 +598,9 @@ public class SearchApp extends javax.swing.JPanel {
             planCm.setText(String.valueOf(p.getIp().getCostPerMonth()));
             planCy.setText(String.valueOf(p.getIp().getCostPerYear()));
             displayVaccines(p.getVaccinationHistory());
-
+            vaccineName.setText(p.getVaccinationHistory().get(0).getVaccinationName());
+            courseFinished.setState(p.getVaccinationHistory().get(0).getIsCourseFinished());
+            appDate.setDate(selectedApp.getApplicationDate());
         } else {
             // NO SELECTION MADE BY USER
             JOptionPane.showMessageDialog(null, "Id does not exist.");
@@ -616,7 +617,7 @@ public class SearchApp extends javax.swing.JPanel {
                 Object row[] = new Object[3];
                 row[0] = v.getVaccineId();
                 row[1] = v.getVaccinationName();
-                row[2] = v.getIsCourseFinished()? "Finished" : "Pending";
+                row[2] = v.getIsCourseFinished() ? "Finished" : "Pending";
 
                 // add the row to the table
                 vaccinesTable.addRow(row);
@@ -628,12 +629,15 @@ public class SearchApp extends javax.swing.JPanel {
     private void deleteApplicantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteApplicantActionPerformed
         // TODO add your handling code here:
         this.business.deleteApplicantById(Integer.valueOf(appId.getText()));
+        JOptionPane.showMessageDialog(null, "Applicant Deleted!");
+
     }//GEN-LAST:event_deleteApplicantActionPerformed
 
     private void updateApplicantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateApplicantActionPerformed
         // TODO add your handling code here:
         if (isMale.getState() && isFemale.getState()) {
             JOptionPane.showMessageDialog(null, "Select only one Gender");
+            
         } else {
 
             //    this.business.findIpById((int)viewTableModel.getValueAt(selectedRow,0)).setPlanName(InsPlanNameTxtField.getText());
@@ -650,6 +654,7 @@ public class SearchApp extends javax.swing.JPanel {
             this.business.findApplicantById(Integer.parseInt(appId.getText())).getPet().setBreed(petBreed.getText());
 
             this.business.findApplicantById(Integer.parseInt(appId.getText())).getPet().setIsFemale(genderSelection());
+            this.business.findApplicantById(Integer.parseInt(appId.getText())).setApplicationDate(appDate.getDate());
 
             int selectedRow = vaccines.getSelectedRow();
 
