@@ -51,7 +51,8 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 204));
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        jButton2.setBackground(new java.awt.Color(0, 204, 204));
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jButton2.setText("Add Applicant");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,7 +60,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        jButton5.setBackground(new java.awt.Color(0, 204, 204));
+        jButton5.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jButton5.setText("Add Vaccination");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,7 +69,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        jButton3.setBackground(new java.awt.Color(0, 204, 204));
+        jButton3.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jButton3.setText("Add Insurance Plan");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,7 +78,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(0, 204, 204));
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jButton1.setText("Insurance Plans");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +87,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        jButton6.setBackground(new java.awt.Color(0, 204, 204));
+        jButton6.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jButton6.setText("Search Applicants");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
