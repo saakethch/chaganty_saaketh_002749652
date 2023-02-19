@@ -98,4 +98,12 @@ public class Pet {
         this.vaccinationHistory.add(vaccine);
     }
     
+    public Vaccine findVaccineById(int id){
+        for(Vaccine v : this.vaccinationHistory){
+            if(id == v.getVaccineId()){
+                return v;
+            }
+        }
+        return this.vaccinationHistory.get(0);
+    }
 }

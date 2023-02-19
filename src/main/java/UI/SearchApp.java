@@ -6,6 +6,7 @@ package UI;
 
 import Model.Applicant;
 import Model.Business;
+import Model.InsurancePlan;
 import Model.Pet;
 import Model.Vaccine;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class SearchApp extends javax.swing.JPanel {
     Business business;
     DefaultTableModel vaccinesTable;
 
-    public SearchApp() {
+    public SearchApp(Business business) {
         initComponents();
         this.business = business;
         this.vaccinesTable = (DefaultTableModel) vaccines.getModel();
@@ -546,20 +547,39 @@ public class SearchApp extends javax.swing.JPanel {
 
     private void searchIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchIdActionPerformed
         // TODO add your handling code here:
-        Applicant a = this.business.findApplicantById(Integer.parseInt(applicantIDSearchTxt.getText()));
-        ArrayList<Applicant> applicants = new ArrayList<>();
-        applicants.add(a);
+        boolean isUnique = this.business.checkIfApplicantIsUnique(Integer.parseInt(searchAppId.getText()));
+
+        if (isUnique) {
+             Applicant a = this.business.findApplicantById(Integer.parseInt(searchAppId.getText()));
+             appChoices.add(String.valueOf(a.getApplicationId()));
+        } else {
+            JOptionPane.showMessageDialog(null, "Id does not exist");
+        }
+       
+        
+        
     }//GEN-LAST:event_searchIdActionPerformed
+
+    public boolean genderSelection() {
+        if(isMale.getState()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     private void searchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchNameActionPerformed
         // TODO add your handling code here:
-        ArrayList<Applicant> applicants = this.business.findApplicantByName(applicantNameSearchTxt.getText());
+        ArrayList<Applicant> applicants = this.business.findApplicantByName(searchAppName.getText());
+        for(Applicant a: applicants){
+            appChoices.add(String.valueOf(a.getApplicationId()));
+            }
     }//GEN-LAST:event_searchNameActionPerformed
 
     private void viewApplicantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewApplicantActionPerformed
         // TODO add your handling code here:
 
-        if (this.business.checkIfApplicantIsUnique(Integer.parseInt(appChoices.getSelectedItem()))) {
+        if (!this.business.checkIfApplicantIsUnique(Integer.parseInt(appChoices.getSelectedItem()))) {
             Applicant selectedApp = this.business.findApplicantById(
                     Integer.parseInt(appChoices.getSelectedItem()));
 
@@ -585,11 +605,9 @@ public class SearchApp extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Id does not exist.");
         }
     }//GEN-LAST:event_viewApplicantActionPerformed
-public void displayVaccines(ArrayList<Vaccine> vaccines) {
-
+    public void displayVaccines(ArrayList<Vaccine> vaccines) {
         if (vaccines.size() > 0) {
             // display
-
             vaccinesTable.setRowCount(0);
 
             for (Vaccine v : vaccines) {
@@ -598,7 +616,7 @@ public void displayVaccines(ArrayList<Vaccine> vaccines) {
                 Object row[] = new Object[3];
                 row[0] = v.getVaccineId();
                 row[1] = v.getVaccinationName();
-                row[2] = v.getIsCourseFinished() ? "Finished" : "Pending";
+                row[2] = v.getIsCourseFinished()? "Finished" : "Pending";
 
                 // add the row to the table
                 vaccinesTable.addRow(row);
@@ -609,12 +627,12 @@ public void displayVaccines(ArrayList<Vaccine> vaccines) {
     }
     private void deleteApplicantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteApplicantActionPerformed
         // TODO add your handling code here:
-        this.business.findApplicantById(Integer.valueOf( appId.getText()));
+        this.business.deleteApplicantById(Integer.valueOf(appId.getText()));
     }//GEN-LAST:event_deleteApplicantActionPerformed
 
     private void updateApplicantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateApplicantActionPerformed
         // TODO add your handling code here:
-        if (isMale.getState()&& isFemale.getState()) {
+        if (isMale.getState() && isFemale.getState()) {
             JOptionPane.showMessageDialog(null, "Select only one Gender");
         } else {
 
@@ -622,7 +640,7 @@ public void displayVaccines(ArrayList<Vaccine> vaccines) {
             this.business.findApplicantById(Integer.parseInt(appId.getText())).setFirstName(appFn.getText());
 
             this.business.findApplicantById(Integer.parseInt(appId.getText())).setLastName(appLn.getText());
-            
+
             this.business.findApplicantById(Integer.parseInt(appId.getText())).getPet().setPetName(petName.getText());
 
             this.business.findApplicantById(Integer.parseInt(appId.getText())).getPet().setPetAge(Integer.parseInt(petAge.getText()));
@@ -635,8 +653,8 @@ public void displayVaccines(ArrayList<Vaccine> vaccines) {
 
             int selectedRow = vaccines.getSelectedRow();
 
-            this.business.findApplicantById(Integer.parseInt(appId.getText())).getPet().findVaccineById(Integer.parseInt(String.valueOf(vaccineTable.getValueAt(selectedRow, 0)))).setVaccineName(vaccineNameTxt.getText());
-            this.business.findApplicantById(Integer.parseInt(appID.getText())).getPet().findVaccineById(Integer.parseInt(String.valueOf(vaccineTable.getValueAt(selectedRow, 0)))).setCourseCompleted(coursecheckBx.isSelected());
+            this.business.findApplicantById(Integer.parseInt(appId.getText())).getPet().findVaccineById(Integer.parseInt(String.valueOf(vaccines.getValueAt(selectedRow, 0)))).setVaccinationName(vaccineName.getText());
+            this.business.findApplicantById(Integer.parseInt(appId.getText())).getPet().findVaccineById(Integer.parseInt(String.valueOf(vaccines.getValueAt(selectedRow, 0)))).setIsCourseFinished(courseFinished.getState());
 
             JOptionPane.showMessageDialog(null, "Applicant Updated!");
         }

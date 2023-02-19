@@ -14,9 +14,9 @@ public class Vaccine {
     private Boolean isCourseFinished;
 
     public Vaccine(String vaccinationName1, boolean courseCompleted, int randomInt) {
-         this.vaccineId = vaccineId;
-         this.vaccinationName = vaccinationName;
-         this.isCourseFinished = isCourseFinished;
+         this.vaccineId = randomInt;
+         this.vaccinationName = vaccinationName1;
+         this.isCourseFinished = courseCompleted;
     }
 
     public int getVaccineId() {

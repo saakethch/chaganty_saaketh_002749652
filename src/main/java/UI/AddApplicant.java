@@ -29,7 +29,7 @@ public class AddApplicant extends javax.swing.JPanel {
     public AddApplicant(Business business) {
         initComponents();
         this.business = business;
-
+        this.applicantsDTable = (DefaultTableModel) applicantTable.getModel();
         populateDropdowns();
         populateApplicants(this.business.getApplicantsDirectory());
     }
@@ -54,10 +54,11 @@ public class AddApplicant extends javax.swing.JPanel {
             for (Applicant a : applicants) {
 
                 // number of columns in the table = 3 and row should be framed
-                Object row[] = new Object[3];
+                Object row[] = new Object[4];
                 row[0] = a.getApplicationId();
-                row[1] = a.getPet().getPetName();
-                row[2] = a.getPet().getPetType();
+                row[1] = a.getFirstName();
+                row[2] = a.getLastName();
+                row[3] = a.getPet().getPetName();
 
                 // add the row to the table
                 applicantsDTable.addRow(row);
@@ -123,6 +124,7 @@ public class AddApplicant extends javax.swing.JPanel {
         choosePlan = new javax.swing.JComboBox<>();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
+        chooseAppp = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         applicantTable = new javax.swing.JTable();
         jLabel30 = new javax.swing.JLabel();
@@ -266,7 +268,11 @@ public class AddApplicant extends javax.swing.JPanel {
             }
         });
 
-        choosePlan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        choosePlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                choosePlanActionPerformed(evt);
+            }
+        });
 
         jLabel28.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         jLabel28.setText("Choose Plan :");
@@ -274,6 +280,13 @@ public class AddApplicant extends javax.swing.JPanel {
         jLabel29.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(51, 51, 51));
         jLabel29.setText("Pet Information:");
+
+        chooseAppp.setText("go");
+        chooseAppp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseApppActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -316,10 +329,12 @@ public class AddApplicant extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(choosePlan, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(choosePlan, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chooseAppp, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -350,26 +365,27 @@ public class AddApplicant extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(9, 9, 9)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(122, 122, 122)))
+                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 132, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,7 +442,8 @@ public class AddApplicant extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(choosePlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel28))
+                            .addComponent(jLabel28)
+                            .addComponent(chooseAppp))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20)
@@ -479,7 +496,7 @@ public class AddApplicant extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -490,7 +507,7 @@ public class AddApplicant extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -553,8 +570,7 @@ public class AddApplicant extends javax.swing.JPanel {
         String vaccinationName = vaccineName.getText();
         boolean courseCompleted = courseFinished.getState();
 
-        int ip_id = (int) choosePlan.getSelectedItem();
-
+        int ip_id = Integer.parseInt(String.valueOf(choosePlan.getSelectedItem()));
         InsurancePlan ip = this.business.findIpById(ip_id);
 
         Pet pet = new Pet(petNameVar, petBreedVar, isfemale, petAgeVar, petTypeVar, ip);
@@ -581,11 +597,28 @@ public class AddApplicant extends javax.swing.JPanel {
         populateApplicants(this.business.getApplicantsDirectory());
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void choosePlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosePlanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_choosePlanActionPerformed
+
+    private void chooseApppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseApppActionPerformed
+        // TODO add your handling code here:
+        int ip_id = Integer.parseInt(String.valueOf(choosePlan.getSelectedItem()));
+
+        InsurancePlan ip = this.business.findIpById(ip_id);
+        planId.setText(String.valueOf(ip.getPlanId()));
+        planName.setText(String.valueOf(ip.getPlanName()));
+        planCostYear.setText(String.valueOf(ip.getCostPerYear()));
+        planCostMonth.setText(String.valueOf(ip.getCostPerMonth()));
+        
+    }//GEN-LAST:event_chooseApppActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser appDate;
     private javax.swing.JTable applicantTable;
     private java.awt.TextField applicantionID;
+    private javax.swing.JButton chooseAppp;
     private javax.swing.JComboBox<String> choosePlan;
     private java.awt.Checkbox courseFinished;
     private java.awt.TextField firstName;

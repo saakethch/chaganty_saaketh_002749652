@@ -11,15 +11,19 @@ import java.util.Date;
  * @author 15512
  */
 public class Applicant {
-
+    private int applicationId;
+    private String firstName;
+    private String lastName;
+    private Date applicationDate;
+    private Pet pet;
     public Applicant(int applicantID, String ownerFirstName, String ownerLastName, Date date, Pet pet1) {
+        this.applicationDate = date;
+        this.pet = pet1;
+        this.applicationId = applicantID;
+        this.firstName = ownerFirstName;
+        this.lastName = ownerLastName;
     }
-    int applicationId;
-    String firstName;
-    String lastName;
-    Date applicationDate;
-    Pet pet;
-    InsurancePlan insurancePlanOpted;
+    
 
     public int getApplicationId() {
         return applicationId;
@@ -61,12 +65,5 @@ public class Applicant {
         this.pet = pet;
     }
 
-    public InsurancePlan getInsurancePlanOpted() {
-        return insurancePlanOpted;
-    }
-
-    public void setInsurancePlanOpted(InsurancePlan insurancePlanOpted) {
-        this.insurancePlanOpted = insurancePlanOpted;
-    }
-    
+ 
 }

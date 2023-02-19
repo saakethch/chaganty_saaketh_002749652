@@ -177,7 +177,7 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new InsurancePlansDirectory(this.business));
+        jSplitPane1.setRightComponent(new ViewInsurancePlans(this.business));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -187,7 +187,7 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new ApplicantsDirectory(this.business));
+        jSplitPane1.setRightComponent(new AddVaccine(this.business));
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -197,7 +197,7 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new SearchApplicant(this.business));
+        jSplitPane1.setRightComponent(new SearchApp(this.business));
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**

@@ -18,6 +18,7 @@ public class AddInsurancePlan extends javax.swing.JPanel {
      * Creates new form AddInsurancePlann
      */
     Business business;
+
     public AddInsurancePlan(Business business) {
         initComponents();
         this.business = business;
@@ -219,13 +220,20 @@ public class AddInsurancePlan extends javax.swing.JPanel {
         // TODO add your handling code here:
         int id = Integer.parseInt(planId.getText());
         String planNameVar = planName.getText();
-        
+
         float costPerMonthVar = Float.parseFloat(costPerMonth.getText());
-        float costPerAnnum = costPerMonthVar*12;
-        InsurancePlan ip = new InsurancePlan(id, planNameVar, costPerMonthVar, costPerAnnum);
-        this.business.addToInsurancePlansDirectory(ip);
-        
-        JOptionPane.showMessageDialog(null, "Created Insurance Plan");
+        float costPerAnnum = costPerMonthVar * 12;
+        boolean isUnique = this.business.checkIfIpIdIsUnique(id);
+
+        if (isUnique) {
+            InsurancePlan ip = new InsurancePlan(id, planNameVar, costPerMonthVar, costPerAnnum);
+
+            this.business.addToInsurancePlansDirectory(ip);
+            JOptionPane.showMessageDialog(null, "Created Insurance Plan");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Insurance Plan ID Already Exists!");
+        }
     }//GEN-LAST:event_addInsurancePlanActionPerformed
 
     private void costPerYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costPerYearActionPerformed
@@ -239,7 +247,7 @@ public class AddInsurancePlan extends javax.swing.JPanel {
 
     private void costPerMonthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_costPerMonthFocusLost
         // TODO add your handling code here:
-        costPerYear.setText(String.valueOf(Float.parseFloat(costPerMonth.getText())*12));
+        costPerYear.setText(String.valueOf(Float.parseFloat(costPerMonth.getText()) * 12));
     }//GEN-LAST:event_costPerMonthFocusLost
 
 
