@@ -4,23 +4,31 @@
  */
 package Personnel;
 
+import Library.Library;
+import Library.RentalRequest;
+
 /**
  *
  * @author 15512
  */
 public class Employee {
-    String employeeID;
-    int exp;
-    String designation;
-    String emp_name;
+    public String employeeID;
+    public int exp;
+    public String designation;
+    public String emp_name;
+    public Library workingLibrary;
     
-    public Employee(String employeeID, String emp_name, String designation, int exp) {
+    public Employee(String employeeID, String emp_name, String designation, int exp, Library l) {
         this.employeeID = employeeID;
         this.emp_name = emp_name;
         this.exp = exp;
         this.designation = designation;
+        this.workingLibrary = l;
     }
 
+    public Employee() {
+        }
+    
     public String getEmployeeID() {
         return employeeID;
     }
@@ -53,4 +61,8 @@ public class Employee {
         this.emp_name = emp_name;
     }
 
+    public void acceptRequest(RentalRequest rr){
+        rr.getMaterial().setIsAvailable(false);
+    }
+    
 }

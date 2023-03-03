@@ -7,6 +7,7 @@ package Role;
 
 import Business.Branch;
 import Business.Business;
+import UI.CustomerPanels.CustomerJFrame;
 import UserAccount.UserAccount;
 import javax.swing.JFrame;
 
@@ -14,14 +15,13 @@ import javax.swing.JFrame;
  *
  * @author 15512
  */
-public abstract class Role {
-    
-    private static String[] roles = {"manager", "admin", "customer", "librarian"};
-    
-    public static String[] getAllRoles() {
-        return roles;
+public class LibrarianRole extends Role {
+
+    @Override
+    public JFrame createWorkArea(Business business, Branch branch, UserAccount useraccount) {
+        // return jframe
+        return new CustomerJFrame(business, branch, useraccount);
+        
     }
     
-    
-    public abstract JFrame createWorkArea(Business business, Branch branch, UserAccount useraccount);
 }

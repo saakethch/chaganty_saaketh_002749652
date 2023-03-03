@@ -27,6 +27,10 @@ public class UserAccount {
         this.role = role;
     }
 
+    UserAccount() {
+        
+    }
+    
     public String getAccountId() {
         return accountId;
     }

@@ -74,9 +74,6 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        registerBtn1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
@@ -87,10 +84,7 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        javax.swing.JTable rentalRequestsTable = new javax.swing.JTable();
-        registerBtn3 = new javax.swing.JButton();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
+        rentalRequestsTable = new javax.swing.JTable();
         jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -203,27 +197,6 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         });
         jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 110, 20));
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel15.setText("Genre");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, 70, 20));
-
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 430, 100, -1));
-
-        registerBtn1.setBackground(new java.awt.Color(153, 255, 204));
-        registerBtn1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        registerBtn1.setText("Add Genre");
-        registerBtn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerBtn1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(registerBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 460, 100, 30));
-
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Add Book");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 70, 20));
@@ -298,27 +271,6 @@ public class LibrarianJFrame extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 330, 170));
 
-        registerBtn3.setBackground(new java.awt.Color(153, 255, 204));
-        registerBtn3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        registerBtn3.setText("Add Author");
-        registerBtn3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerBtn3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(registerBtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, -1, 30));
-
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 100, -1));
-
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel19.setText("Author");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 70, 20));
-
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel21.setText("Rental Requests");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, -1));
@@ -328,11 +280,38 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtn1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        new MainJFrame(business, branch, useraccount);
-    }//GEN-LAST:event_backBtn1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void registerBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registerBtn2ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9ActionPerformed
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         // TODO add your handling code here:
@@ -340,64 +319,22 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         // based on role selected, we will register the person into those directories
         // remember to check if the credentials are unique
         if (jComboBox1.getSelectedItem().equals("customer")) {
-//            this.business.getTopLevelUserAccountDirectory().createUserAccount(jTextField4.getText(), jTextField3.getText(), new CustomerRole());
+            //            this.business.getTopLevelUserAccountDirectory().createUserAccount(jTextField4.getText(), jTextField3.getText(), new CustomerRole());
         }
         if (jComboBox1.getSelectedItem().equals("branch manager")) {
-//            if (fieldBranch.getText() != "") {
-//                this.branch.getBranchuseraccountDirectory().createUserAccount(jTextField4.getText(), jTextField3.getText(), new BranchAdminRole());
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Create a new branch by filling the branch field to add it's branch manager.");
-//            }
+            //            if (fieldBranch.getText() != "") {
+                //                this.branch.getBranchuseraccountDirectory().createUserAccount(jTextField4.getText(), jTextField3.getText(), new BranchAdminRole());
+                //            } else {
+                //                JOptionPane.showMessageDialog(null, "Create a new branch by filling the branch field to add it's branch manager.");
+                //            }
         }
     }//GEN-LAST:event_registerBtnActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void backBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtn1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
-
-    private void registerBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerBtn1ActionPerformed
-
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void registerBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtn2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerBtn2ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void registerBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtn3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerBtn3ActionPerformed
-
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+        this.setVisible(false);
+        new MainJFrame(business, branch, useraccount);
+    }//GEN-LAST:event_backBtn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -446,10 +383,8 @@ public class LibrarianJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
@@ -461,17 +396,14 @@ public class LibrarianJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTable materialsTable;
     private javax.swing.JButton registerBtn;
-    private javax.swing.JButton registerBtn1;
     private javax.swing.JButton registerBtn2;
-    private javax.swing.JButton registerBtn3;
+    private javax.swing.JTable rentalRequestsTable;
     // End of variables declaration//GEN-END:variables
 }

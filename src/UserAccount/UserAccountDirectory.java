@@ -28,17 +28,22 @@ public class UserAccountDirectory {
         this.useraccountlist = useraccountlist;
     }
     
-    public UserAccount createUserAccount(String name, String password, Role role) {
-        UserAccount user = new UserAccount(name, password, role);
-        this.useraccountlist.add(user);
-        return user;
+    public UserAccount addUserAccount(UserAccount ua) {
+        this.useraccountlist.add(ua);
+        return ua;
     }
     
-    public UserAccount assignEmployeeToBranch(Branch b, String name, String password, Role role) {
-        UserAccount user = new UserAccount(name, password, role);
-        this.useraccountlist.add(user);
-        return user;
+    public UserAccount createUserAccount(String username, String password, Role role) {
+        UserAccount ua = new UserAccount( username,  password,  role);
+        this.useraccountlist.add(ua);
+        return ua;
     }
+    
+    
+//    public UserAccount assignEmployeeToBranch(Branch b, UserAccount ua) {
+//        this.useraccountlist.add(user);
+//        return user;
+//    }
     
     public UserAccount authenticateUser(String name, String password) {
         for(UserAccount ua: this.useraccountlist) {
@@ -50,5 +55,4 @@ public class UserAccountDirectory {
     }
     
     // all other required methods to be implemented below
-    
 }

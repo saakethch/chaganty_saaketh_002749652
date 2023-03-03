@@ -126,8 +126,8 @@ public class MainJFrame extends javax.swing.JFrame {
         // we need to traverse through all the directories to check for the username and password role match
         Boolean foundUser = false;
         
-        if(this.business.getTopLevelUserAccountDirectory().authenticateUser(password.getText(), password.getText()) != null) {
-            UserAccount user = this.business.getTopLevelUserAccountDirectory().authenticateUser(password.getText(), password.getText());
+        if(this.business.getUserAccounts().authenticateUser(password.getText(), password.getText()) != null) {
+            UserAccount user = this.business.getUserAccounts().authenticateUser(password.getText(), password.getText());
             foundUser = true;
             user.getRole().createWorkArea(business, branch, useraccount);
             this.setVisible(false);

@@ -1,5 +1,9 @@
 package Business;
 
+import Library.Library;
+import Personnel.Employee;
+import Personnel.Customer;
+import UserAccount.UserAccount;
 import UserAccount.UserAccountDirectory;
 import java.util.ArrayList;
 
@@ -15,13 +19,23 @@ import java.util.ArrayList;
  */
 public class Branch {
     String name;
-    UserAccountDirectory branchuseraccountDirectory;
+    ArrayList<Customer> customers;
+    Library library; 
+    String floorNum;
+
+    public String getFloorNum() {
+        return floorNum;
+    }
+
+    public void setFloorNum(String floorNum) {
+        this.floorNum = floorNum;
+    }
     
-    // library object 
-    
-    Branch(String name) {
+    Branch(String name, String floorNum) {
         this.name = name;
-        this.branchuseraccountDirectory = new UserAccountDirectory();
+        this.floorNum = floorNum;
+        this.customers = new ArrayList<Customer>();
+        this.library = new Library();
     }
 
     public String getName() {
@@ -32,13 +46,28 @@ public class Branch {
         this.name = name;
     }
 
-    public UserAccountDirectory getBranchuseraccountDirectory() {
-        return branchuseraccountDirectory;
+    public ArrayList<Customer> getCustomers() {
+        return this.customers;
     }
 
-    public void setBranchuseraccountDirectory(UserAccountDirectory branchuseraccountDirectory) {
-        this.branchuseraccountDirectory = branchuseraccountDirectory;
+    public void addCustomerToBranch(Customer c) {
+        this.customers.add(c);
     }
     
+    public Customer findCustomer(String id){
+        for(Customer c : this.customers){
+            if(c.getId().equals(id)){
+                return c;
+            }
+        }
+        return null;
+    }
     
+    public Library getLibrary() {
+        return library;
+    }
+
+    public void setLibrary(Library library) {
+        this.library = library;
+    }
 }
