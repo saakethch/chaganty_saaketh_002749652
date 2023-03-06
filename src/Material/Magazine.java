@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
+package Material; 
 import Library.Material.Material;
 import java.util.Date;
 
@@ -16,6 +16,7 @@ public class Magazine extends Material{
     
     public Magazine(String name, Date registeredDate, String c, String it){
         super();
+        this.materialType = "Magazine";
         this.name = name;
         this.registeredDate = registeredDate;
         this.company = c;

@@ -5,6 +5,7 @@
  */
 package Business;
 
+import Library.Library;
 import Personnel.Employee;
 import Role.SystemAdminRole;
 import Personnel.Customer;
@@ -16,52 +17,65 @@ import java.util.ArrayList;
  * @author 15512
  */
 public class Business {
+
     ArrayList<Branch> branches;
     UserAccountDirectory userAccounts;
-    
+    ArrayList<Customer> customers;
+
     Business() {
         this.branches = new ArrayList<Branch>();
+        this.customers = new ArrayList<Customer>();
         this.userAccounts = new UserAccountDirectory();
         // CREATING ADMIN
-        this.userAccounts.createUserAccount("admin", "admin", new SystemAdminRole());
+        this.userAccounts.createUserAccount("a", "a", new SystemAdminRole());
     }
 
     public ArrayList<Branch> getBranches() {
         return branches;
     }
-    
+
     public Branch findBranchByName(String name) {
-        for (Branch b: this.getBranches()){
-            if (b.getName().equals(name)){
+        for (Branch b : this.getBranches()) {
+            if (b.getName().equals(name)) {
                 return b;
             }
         }
-        return null;  
+        return null;
     }
-    
+
     public UserAccountDirectory getUserAccounts() {
         return userAccounts;
     }
 
-    public ArrayList<Customer> getCustomersByBranch(String lib) {
-       return this.findBranchByName(lib).getCustomers();
-    }
-    
     public ArrayList<Employee> getEmployeesByBranch(String lib) {
         return this.findBranchByName(lib).getLibrary().getEmployeeDirectory();
     }
-    
-    public void addEmployee(String bName, Employee e) {
-        this.findBranchByName(bName).getLibrary().addEmployee(e);
+
+//    public void addEmployee(String bName, Employee e) {
+//        this.findBranchByName(bName).getLibrary().addEmployee(e);
+//    }
+
+    public void addCustomer(String id,String name) {
+        Customer c = new Customer(id,name);
+        this.customers.add(c);
+        
     }
     
-    public void addCustomer(String bName, Customer c) {
-        this.findBranchByName(bName).addCustomerToBranch(c);
+    public ArrayList<Customer> getCustomers() {
+        return this.customers;
     }
 
-    
-    public Branch createBranch(String name, String floorNum) {
-        Branch branch = new Branch(name,floorNum);
+    public Customer findCustomer(String id) {
+        for (Customer c : this.customers) {
+            if (c.getId().equals(id)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public Branch createBranch(String name, String building_num) {
+        Branch branch = new Branch(name,building_num);
         this.branches.add(branch);
         return branch;
     }

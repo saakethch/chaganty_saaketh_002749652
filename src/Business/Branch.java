@@ -1,11 +1,7 @@
 package Business;
 
 import Library.Library;
-import Personnel.Employee;
-import Personnel.Customer;
-import UserAccount.UserAccount;
 import UserAccount.UserAccountDirectory;
-import java.util.ArrayList;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,24 +15,24 @@ import java.util.ArrayList;
  */
 public class Branch {
     String name;
-    ArrayList<Customer> customers;
+    UserAccountDirectory branchUad;
     Library library; 
-    String floorNum;
 
-    public String getFloorNum() {
-        return floorNum;
+    Branch(String name, String lib_building) {
+        this.name = name;
+        this.library = new Library(lib_building);
+        this.branchUad = new UserAccountDirectory();
     }
 
-    public void setFloorNum(String floorNum) {
-        this.floorNum = floorNum;
+    public UserAccountDirectory getBranchUad() {
+        return branchUad;
+    }
+
+    public void setBranchUad(UserAccountDirectory branchUad) {
+        this.branchUad = branchUad;
     }
     
-    Branch(String name, String floorNum) {
-        this.name = name;
-        this.floorNum = floorNum;
-        this.customers = new ArrayList<Customer>();
-        this.library = new Library();
-    }
+    
 
     public String getName() {
         return name;
@@ -46,22 +42,7 @@ public class Branch {
         this.name = name;
     }
 
-    public ArrayList<Customer> getCustomers() {
-        return this.customers;
-    }
 
-    public void addCustomerToBranch(Customer c) {
-        this.customers.add(c);
-    }
-    
-    public Customer findCustomer(String id){
-        for(Customer c : this.customers){
-            if(c.getId().equals(id)){
-                return c;
-            }
-        }
-        return null;
-    }
     
     public Library getLibrary() {
         return library;

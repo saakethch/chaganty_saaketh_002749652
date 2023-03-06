@@ -8,6 +8,7 @@ package Role;
 import Business.Branch;
 import Business.Business;
 import UI.CustomerPanels.CustomerJFrame;
+import UI.LibrarianPanel.LibrarianJFrame;
 import UserAccount.UserAccount;
 import javax.swing.JFrame;
 
@@ -20,8 +21,10 @@ public class LibrarianRole extends Role {
     @Override
     public JFrame createWorkArea(Business business, Branch branch, UserAccount useraccount) {
         // return jframe
-        return new CustomerJFrame(business, branch, useraccount);
+        return new LibrarianJFrame(business, branch, useraccount);
         
     }
-    
+    public String toStringRole(){
+        return "Librarian";
+    }
 }

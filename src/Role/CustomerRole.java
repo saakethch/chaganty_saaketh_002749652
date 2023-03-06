@@ -23,5 +23,8 @@ public class CustomerRole extends Role {
         return new CustomerJFrame(business, branch, useraccount);
         
     }
+    public String toStringRole(){
+        return "Customer";
+    }
     
 }

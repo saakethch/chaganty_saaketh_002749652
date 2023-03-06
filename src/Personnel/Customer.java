@@ -5,11 +5,7 @@
  */
 package Personnel;
 
-import Library.Library;
-import Library.Material.Material;
 import Library.RentalRequest;
-import Personnel.Employee;
-import UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -21,36 +17,31 @@ public class Customer {
     
     private String id;
     private String name;
-    private String address;
     private RentalRequest currentRental;
     private ArrayList<RentalRequest> rentalRequestHistory;
-    private Library library;
     
-    public Customer(String id,String name,String address,Library library){
+    public Customer(String id,String name){
         this.name = name;
         this.id = id;
-        this.address = address;
-        this.library = library;
         this.rentalRequestHistory = new ArrayList<RentalRequest>();
-        
     }
     
     public String getId() {
         return id;
     }
     
-    public void createRentalRequest(int price, int duration, Material material, Library lib){
-        this.currentRental = new RentalRequest(price,  duration, material);
-        this.rentalRequestHistory.add(this.currentRental);
-        this.library.getRentalRequests().addToRentalRequests(this.currentRental);
-    }
-    
-    public void returnRentalRequest(){
-        this.currentRental.setStatus("Returned");
-        this.currentRental.getMaterial().setIsAvailable(true);
-        this.library.getRentalRequests().addToRentalRequests(this.currentRental);
-        
-    }
+//    public void createRentalRequest(int price, int duration, Material material, Library lib){
+//        this.currentRental = new RentalRequest(price,  duration, material);
+//        this.rentalRequestHistory.add(this.currentRental);
+//        this.library.getRentalRequests().addToRentalRequests(this.currentRental);
+//    }
+//    
+//    public void returnRentalRequest(){
+//        this.currentRental.setStatus("Returned");
+//        this.currentRental.getMaterial().setIsAvailable(true);
+//        this.library.getRentalRequests().addToRentalRequests(this.currentRental);
+//        
+//    }
 
     public void setId(String id) {
         this.id = id;
@@ -64,13 +55,6 @@ public class Customer {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public RentalRequest getCurrentRental() {
         return currentRental;

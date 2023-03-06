@@ -34,6 +34,11 @@ public class UserAccountDirectory {
     }
     
     public UserAccount createUserAccount(String username, String password, Role role) {
+        for(UserAccount ua: this.useraccountlist) {
+            if(ua.getUsername().equals(username)) {
+                return null;
+            }
+        }
         UserAccount ua = new UserAccount( username,  password,  role);
         this.useraccountlist.add(ua);
         return ua;

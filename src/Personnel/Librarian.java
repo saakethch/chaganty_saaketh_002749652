@@ -22,9 +22,9 @@ public class Librarian extends Employee{
     }
 
 
-    public ArrayList<RentalRequest> getAllRentalRequests() {
-        return this.workingLibrary.getRentalRequests().getRentalRequests();
-    }
+//    public ArrayList<RentalRequest> getAllRentalRequests() {
+//        return this.workingLibrary.getRentalRequests().getRentalRequests();
+//    }
     
 //    public void acceptRentalRequest(Material m, RentalRequest rr){
 //        this.workingLibrary.getRentalRequests().acceptRentMaterial(m, rr);

@@ -18,12 +18,20 @@ public class Employee {
     public String emp_name;
     public Library workingLibrary;
     
-    public Employee(String employeeID, String emp_name, String designation, int exp, Library l) {
+    public Employee(String employeeID, String emp_name, String designation, int exp, Library lib) {
         this.employeeID = employeeID;
         this.emp_name = emp_name;
         this.exp = exp;
         this.designation = designation;
-        this.workingLibrary = l;
+        this.workingLibrary = lib;
+    }
+
+    public Library getWorkingLibrary() {
+        return workingLibrary;
+    }
+
+    public void setWorkingLibrary(Library workingLibrary) {
+        this.workingLibrary = workingLibrary;
     }
 
     public Employee() {

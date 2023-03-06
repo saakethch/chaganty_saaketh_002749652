@@ -27,7 +27,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         this.business = Business.getInstance();
         
-        populateDropdown();
+//        populateDropdown();
     }
 
     public MainJFrame(Business business, Branch branch, UserAccount useraccount) {
@@ -38,7 +38,7 @@ public class MainJFrame extends javax.swing.JFrame {
         this.branch = branch;
         this.useraccount = useraccount;
         
-        populateDropdown();
+//        populateDropdown();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,9 +52,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         password = new javax.swing.JTextField();
         username = new javax.swing.JTextField();
-        roles = new javax.swing.JComboBox();
         loginBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -78,8 +76,6 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 175, 39));
 
-        jPanel1.add(roles, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 170, 30));
-
         loginBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         loginBtn.setText("LOGIN");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -87,11 +83,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 loginBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Role");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 110, -1));
+        jPanel1.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 0, 51));
@@ -132,9 +124,10 @@ public class MainJFrame extends javax.swing.JFrame {
             user.getRole().createWorkArea(business, branch, useraccount);
             this.setVisible(false);
         } else {
+            System.out.println("here");
             for(Branch branch: this.business.getBranches()) {
-                if(branch.getBranchuseraccountDirectory().authenticateUser(password.getText(), username.getText()) != null) {
-                    UserAccount branchUser = branch.getBranchuseraccountDirectory().authenticateUser(password.getText(), username.getText());
+                if(branch.getBranchUad().authenticateUser(password.getText(), username.getText()) != null) {
+                    UserAccount branchUser = branch.getBranchUad().authenticateUser(password.getText(), username.getText());
                     foundUser = true;
                     branchUser.getRole().createWorkArea(business, branch, useraccount);
                     this.setVisible(false);
@@ -147,13 +140,13 @@ public class MainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loginBtnActionPerformed
 
-    public void populateDropdown() {
-        roles.removeAllItems();
-        
-        for(String rolename: Role.getAllRoles()) {
-            roles.addItem(rolename);
-        }
-    }
+//    public void populateDropdown() {
+//        roles.removeAllItems();
+//        
+//        for(String rolename: Role.getAllRoles()) {
+//            roles.addItem(rolename);
+//        }
+//    }
     /**
      * @param args the command line arguments
      */
@@ -190,14 +183,12 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginBtn;
     private javax.swing.JTextField password;
-    private javax.swing.JComboBox roles;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }

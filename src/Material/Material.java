@@ -16,6 +16,15 @@ public class Material {
     public String name;
     public Date registeredDate;
     public Boolean isAvailable = true;
+    public String materialType;
+
+    public String getMaterialType() {
+        return materialType;
+    }
+
+    public void setMaterialType(String materialType) {
+        this.materialType = materialType;
+    }
 
     public String getId() {
         return id;
@@ -37,11 +46,12 @@ public class Material {
         this.id = "Serial" + count++; 
     }
     
-//    public Material(String name, Date date, boolean isAvail){
-//        this.serialNo = "Serial" + count++;
+//    public Material(String name, Date date){
+//        this.id = "Serial" + count++;
 //        this.name = name;
-//        this.registerDate = date;
-//        this.isAvailable = isAvail;
+//        this.registeredDate = date;
+//        this.isAvailable = true;
+//        
 //    }
 
     public String getName() {
@@ -58,13 +68,6 @@ public class Material {
 
     public void setIsAvailable(Boolean isAvailable) {
         this.isAvailable = isAvailable;
-    }
-    
-    public String getAvailString(Boolean isAvail){
-        if (isAvail){
-            return "Y";
-        }
-        return "N";
     }
     
     @Override

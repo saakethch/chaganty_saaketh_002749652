@@ -22,6 +22,5 @@ public abstract class Role {
         return roles;
     }
     
-    
     public abstract JFrame createWorkArea(Business business, Branch branch, UserAccount useraccount);
 }

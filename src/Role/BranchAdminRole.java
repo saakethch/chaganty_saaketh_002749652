@@ -17,34 +17,12 @@ import javax.swing.JFrame;
  */
 public class BranchAdminRole extends Role {
     
-    private int exp;
-    private String designation;
-    private int rentalsTotal;
-
-    public int getExp() {
-        return exp;
-    }
-
-    public void setExp(int exp) {
-        this.exp = exp;
-    }
-
-    public String getDesignation() {
-        return designation;
-    }
-
-    public void setDesignation(String designation) {
-        this.designation = designation;
-    }
-   
-    
-    public int getRentalsTotal() {
-        return rentalsTotal;
-    }
-
     @Override
     public JFrame createWorkArea(Business business, Branch branch, UserAccount useraccount) {
        return new BranchManagerJFrame(business, branch, useraccount);
     }
     
+    public String toStringRole(){
+        return "Branch Manager";
+    }
 }

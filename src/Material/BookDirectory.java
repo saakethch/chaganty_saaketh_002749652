@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
+package Material;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -23,7 +23,7 @@ public class BookDirectory {
         return books;
     }
     
-    public Book addBook(String name, Date registerDate, String a, String g, int pages, String lang, String type){
+    public Book addBook(String name, Date registerDate, String a, String g, String pages, String lang, String type){
         Book book = new Book(name, registerDate, a, g, pages, lang, type);
         this.books.add(book);
         

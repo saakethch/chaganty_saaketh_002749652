@@ -3,10 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Library;
-
 import Library.Material.Material;
 import Personnel.Employee;
 import java.util.ArrayList;
+import Material.MagazineDirectory;
+import Material.BookDirectory;
 
 /**
  *
@@ -16,27 +17,80 @@ public class Library {
     
     private ArrayList<Employee> employeeDirectory;
     private ArrayList<Material> materialCollection;
+    private BookDirectory bookDirectory;
+    private MagazineDirectory magDiretory;
     private RentalRequestsDirectory rentalRequests;
     private ArrayList<String> authors;
     private ArrayList<String> genres;
     private Employee librarian;
     private Employee manager;
+    private String lib_building;
 
+    public BookDirectory getBookDirectory() {
+        return bookDirectory;
+    }
+
+    public void setBookDirectory(BookDirectory bookDirectory) {
+        this.bookDirectory = bookDirectory;
+    }
+
+    public MagazineDirectory getMagDiretory() {
+        return magDiretory;
+    }
+
+    public void setMagDiretory(MagazineDirectory magDiretory) {
+        this.magDiretory = magDiretory;
+    }
+
+    public Library(String lib_building){
+        this.employeeDirectory = new ArrayList<Employee>();
+        this.materialCollection = new ArrayList<Material>();
+        this.rentalRequests = new RentalRequestsDirectory();
+        this.bookDirectory = new BookDirectory();
+        this.magDiretory = new MagazineDirectory();
+        this.authors = new ArrayList<String>();
+        this.genres = new ArrayList<String>();
+        this.lib_building = lib_building;
+    }
+    
+    
     public ArrayList<Employee> getEmployeeDirectory() {
         return employeeDirectory;
     }
 
-    public void addEmployee(Employee employee) {
+    public void addEmployee(String employeeID, String emp_name, String designation, int exp,Library lib) {
+        Employee employee = new Employee(employeeID, emp_name, designation, exp, lib);
         this.employeeDirectory.add(employee);
+        if(designation == "manager"){
+            this.manager = employee;
+        }
+        if(designation == "librarian"){
+            this.librarian = employee;
+        }
     }
 
     public ArrayList<Material> getMaterialCollection() {
         return materialCollection;
     }
 
+    public String getLib_building() {
+        return lib_building;
+    }
+
+    public void setLib_building(String lib_building) {
+        this.lib_building = lib_building;
+    }
+
     public void setMaterialCollection(ArrayList<Material> materialCollection) {
         this.materialCollection = materialCollection;
     }
+
+//    public void addMaterial(String name, Date date) {
+//        
+//        Material m = new Material(name,date);
+//        this.materialCollection.add(m);
+//    }
+    
 
     public RentalRequestsDirectory getRentalRequests() {
         return rentalRequests;

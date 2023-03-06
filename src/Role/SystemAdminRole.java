@@ -42,4 +42,8 @@ public class SystemAdminRole extends Role {
         return new SystemAdminJFrame(business, branch, useraccount);
     }
     
+    public String toStringRole(){
+        return "Admin";
+    }
+    
 }
