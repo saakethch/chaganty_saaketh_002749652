@@ -40,11 +40,12 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         this.useraccount = useraccount;
         branchName.setText(branch.getName());
         librarianName.setText(branch.getLibrary().getLibrarian().getEmp_name());
-        
+        expLib.setText(String.valueOf(branch.getLibrary().getLibrarian().getExp()));
         this.matTable = (DefaultTableModel) materialsTable.getModel();
         this.rrTable = (DefaultTableModel) rentalsTable.getModel();
         populateMaterial();
         populateRR();
+        populateAG();
     }
 
     public void populateRR() {
@@ -65,12 +66,16 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         }
     }
     
-//    public void populateDropdown() {
-//        itype.removeAllItems();
-//        for (String rolename : Role.getAllRoles()) {
-//            itype.addItem(rolename);
-//        }
-//    }
+    public void populateAG() {
+        authors.removeAllItems();
+        genres.removeAllItems();
+        for (String a : this.branch.getLibrary().getAuthorDirectory()) {
+            authors.addItem(a);
+        }
+        for (String g : this.branch.getLibrary().getGenreDirectory()) {
+            genres.addItem(g);
+        }
+    }
     
     public void populateMaterial() {
         matTable.setRowCount(0);
@@ -128,7 +133,6 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         materialsTable = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
         librarianName = new javax.swing.JLabel();
         branchName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -138,14 +142,12 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         company = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        author = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         pages = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         title = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        genre = new javax.swing.JTextField();
         itype = new javax.swing.JComboBox<>();
         addBook = new javax.swing.JButton();
         rejectRentalReq = new javax.swing.JButton();
@@ -156,11 +158,24 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         language = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        bindingTypeCombo = new javax.swing.JComboBox<>();
+        authors = new javax.swing.JComboBox<>();
         magName = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         rentalsTable = new javax.swing.JTable();
+        genreInp = new javax.swing.JTextField();
+        addBook1 = new javax.swing.JButton();
+        addBook2 = new javax.swing.JButton();
+        authorInp = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        dateAddedMag = new com.toedter.calendar.JDateChooser();
+        jLabel22 = new javax.swing.JLabel();
+        bindingTypeCombo1 = new javax.swing.JComboBox<>();
+        genres = new javax.swing.JComboBox<>();
+        expLib = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -175,7 +190,7 @@ public class LibrarianJFrame extends javax.swing.JFrame {
                 backBtn1ActionPerformed(evt);
             }
         });
-        jPanel1.add(backBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, -1, -1));
+        jPanel1.add(backBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 30, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 0, 51));
@@ -184,7 +199,7 @@ public class LibrarianJFrame extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Materials");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 80, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 80, 20));
 
         materialsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -199,31 +214,27 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(materialsTable);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 820, 200));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Date Added");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, 110, 20));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 820, 220));
 
         librarianName.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         librarianName.setText("Librarian");
-        jPanel1.add(librarianName, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 80, 20));
+        jPanel1.add(librarianName, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, 80, 20));
 
         branchName.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         branchName.setText("Branch  ");
-        jPanel1.add(branchName, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 80, 20));
+        jPanel1.add(branchName, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 110, 80, 20));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Branch  ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 70, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 70, 20));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setText("Company");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, 70, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 70, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setText("Issue Type");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, 70, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 70, -1));
 
         addMag.setBackground(new java.awt.Color(153, 255, 204));
         addMag.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -233,69 +244,55 @@ public class LibrarianJFrame extends javax.swing.JFrame {
                 addMagActionPerformed(evt);
             }
         });
-        jPanel1.add(addMag, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 330, 120, 30));
+        jPanel1.add(addMag, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 380, 130, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Librarian");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 70, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, 70, 20));
 
         company.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 companyActionPerformed(evt);
             }
         });
-        jPanel1.add(company, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, 100, 20));
+        jPanel1.add(company, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, 100, 30));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setText("Author");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 70, -1));
-
-        author.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                authorActionPerformed(evt);
-            }
-        });
-        jPanel1.add(author, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 120, 20));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 70, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setText("Pages");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 70, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 70, -1));
 
         pages.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pagesActionPerformed(evt);
             }
         });
-        jPanel1.add(pages, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 120, 20));
+        jPanel1.add(pages, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 120, 30));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Add Book");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 70, 20));
+        jLabel8.setText("Profile");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, 70, 20));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel16.setText("Title");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 40, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 40, -1));
 
         title.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 titleActionPerformed(evt);
             }
         });
-        jPanel1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 120, 20));
+        jPanel1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 120, 30));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel17.setText("Genre");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 70, -1));
-
-        genre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                genreActionPerformed(evt);
-            }
-        });
-        jPanel1.add(genre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 120, 20));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 70, -1));
 
         itype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Daily", "Weekly", "Monthly", "Yearly" }));
-        jPanel1.add(itype, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 300, 100, -1));
+        jPanel1.add(itype, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 300, 100, 30));
 
         addBook.setBackground(new java.awt.Color(153, 255, 204));
         addBook.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -305,7 +302,7 @@ public class LibrarianJFrame extends javax.swing.JFrame {
                 addBookActionPerformed(evt);
             }
         });
-        jPanel1.add(addBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, 30));
+        jPanel1.add(addBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 130, 30));
 
         rejectRentalReq.setBackground(new java.awt.Color(255, 153, 153));
         rejectRentalReq.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -315,11 +312,11 @@ public class LibrarianJFrame extends javax.swing.JFrame {
                 rejectRentalReqActionPerformed(evt);
             }
         });
-        jPanel1.add(rejectRentalReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 80, -1));
+        jPanel1.add(rejectRentalReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 80, -1));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel21.setText("Rental Requests");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         acceptRentalReq1.setBackground(new java.awt.Color(153, 255, 153));
         acceptRentalReq1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -329,41 +326,40 @@ public class LibrarianJFrame extends javax.swing.JFrame {
                 acceptRentalReq1ActionPerformed(evt);
             }
         });
-        jPanel1.add(acceptRentalReq1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
-        jPanel1.add(dateAdded, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, -1, -1));
+        jPanel1.add(acceptRentalReq1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+        jPanel1.add(dateAdded, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 120, 30));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Add Magazine");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 210, 110, 20));
+        jLabel6.setText("Add Authors & Genres");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 20));
 
         language.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 languageActionPerformed(evt);
             }
         });
-        jPanel1.add(language, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 120, 20));
+        jPanel1.add(language, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 120, 30));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setText("Language");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 70, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 70, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel18.setText("Binding");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 70, -1));
+        jLabel18.setText("Date Added");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 340, 80, 20));
 
-        bindingTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paper Back", "Hard Cover", "Spiral ", " " }));
-        jPanel1.add(bindingTypeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 120, -1));
+        jPanel1.add(authors, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 120, 30));
 
         magName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 magNameActionPerformed(evt);
             }
         });
-        jPanel1.add(magName, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 100, 20));
+        jPanel1.add(magName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 100, 30));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel19.setText("Name");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 240, 70, -1));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, 70, -1));
 
         rentalsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -378,7 +374,71 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(rentalsTable);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 370, 170));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 370, 170));
+
+        genreInp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genreInpActionPerformed(evt);
+            }
+        });
+        jPanel1.add(genreInp, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 140, 30));
+
+        addBook1.setBackground(new java.awt.Color(153, 255, 204));
+        addBook1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        addBook1.setText("Add Author");
+        addBook1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBook1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addBook1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, 30));
+
+        addBook2.setBackground(new java.awt.Color(153, 255, 204));
+        addBook2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        addBook2.setText("Add Genre");
+        addBook2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBook2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addBook2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 100, 30));
+
+        authorInp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                authorInpActionPerformed(evt);
+            }
+        });
+        jPanel1.add(authorInp, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 140, 30));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setText("Add Magazine");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 190, 110, 20));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel20.setText("Binding");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 70, -1));
+        jPanel1.add(dateAddedMag, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, 100, 30));
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel22.setText("Date Added");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 80, 20));
+
+        bindingTypeCombo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paper Back", "Hard Cover", "Spiral ", " " }));
+        jPanel1.add(bindingTypeCombo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 120, 30));
+
+        jPanel1.add(genres, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 120, 30));
+
+        expLib.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        expLib.setText("Exp");
+        jPanel1.add(expLib, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, 80, 20));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setText("Exp");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 150, 70, 20));
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel23.setText("Add Book");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 70, 20));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -394,19 +454,20 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         this.branch.getLibrary().rejectRentalReq(rr_id);
         this.business.rejectedReq(u_id);
         
-        JOptionPane.showMessageDialog(null, "Customer Request accepted");
+        JOptionPane.showMessageDialog(null, "Customer Request rejected");
         populateRR();
+        populateAG();
     }//GEN-LAST:event_rejectRentalReqActionPerformed
 
     private void addBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookActionPerformed
         // TODO add your handling code here:
         String titleBook = title.getText();
         Date dateBook = dateAdded.getDate();
-        String authorBook = author.getText();
-        String genreBook = genre.getText();
+        String authorBook = (String) authors.getSelectedItem();
+        String genreBook = (String) genres.getSelectedItem();
         String pagesBook = pages.getText();
         String langBook = language.getText();
-        String typeOfBindingBook = (String) bindingTypeCombo.getSelectedItem();
+        String typeOfBindingBook = (String) authors.getSelectedItem();
 
         //create author and genre, add them to respective directory, and return the author or genre
         branch.getLibrary().addToAuthorDirectory(authorBook);
@@ -415,11 +476,8 @@ public class LibrarianJFrame extends javax.swing.JFrame {
                 genreBook, pagesBook, langBook, typeOfBindingBook, this.branch.getName());
         JOptionPane.showMessageDialog(null, "Book added");
         populateMaterial();
+        
     }//GEN-LAST:event_addBookActionPerformed
-
-    private void genreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_genreActionPerformed
 
     private void titleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleActionPerformed
         // TODO add your handling code here:
@@ -428,10 +486,6 @@ public class LibrarianJFrame extends javax.swing.JFrame {
     private void pagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pagesActionPerformed
-
-    private void authorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_authorActionPerformed
 
     private void companyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_companyActionPerformed
         // TODO add your handling code here:
@@ -442,7 +496,7 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         String companyMag = company.getText();
         String issueMag = (String) itype.getSelectedItem();
         String magname = magName.getText();
-        Date dateBook = dateAdded.getDate();
+        Date dateBook = dateAddedMag.getDate();
         
         //create author and genre, add them to respective directory, and return the author or genre
         branch.getLibrary().getMagDiretory().addMagazine(magname, dateBook,companyMag, issueMag, this.branch.getName());
@@ -465,6 +519,7 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         this.business.acceptedReq(u_id);
         JOptionPane.showMessageDialog(null, "Customer Request accepted");
         populateRR();
+        populateMaterial();
     }//GEN-LAST:event_acceptRentalReq1ActionPerformed
 
     private void languageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageActionPerformed
@@ -474,6 +529,26 @@ public class LibrarianJFrame extends javax.swing.JFrame {
     private void magNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_magNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_magNameActionPerformed
+
+    private void genreInpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreInpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_genreInpActionPerformed
+
+    private void addBook1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBook1ActionPerformed
+        // TODO add your handling code here:
+        this.branch.getLibrary().addToAuthorDirectory(authorInp.getText());
+        populateAG();
+    }//GEN-LAST:event_addBook1ActionPerformed
+
+    private void addBook2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBook2ActionPerformed
+        // TODO add your handling code here:
+        this.branch.getLibrary().addToGenreDirectory(genreInp.getText());
+        populateAG();
+    }//GEN-LAST:event_addBook2ActionPerformed
+
+    private void authorInpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authorInpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_authorInpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -514,16 +589,23 @@ public class LibrarianJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acceptRentalReq1;
     private javax.swing.JButton addBook;
+    private javax.swing.JButton addBook1;
+    private javax.swing.JButton addBook2;
     private javax.swing.JButton addMag;
-    private javax.swing.JTextField author;
+    private javax.swing.JTextField authorInp;
+    private javax.swing.JComboBox<String> authors;
     private javax.swing.JButton backBtn1;
-    private javax.swing.JComboBox<String> bindingTypeCombo;
+    private javax.swing.JComboBox<String> bindingTypeCombo1;
     private javax.swing.JLabel branchName;
     private javax.swing.JTextField company;
     private com.toedter.calendar.JDateChooser dateAdded;
-    private javax.swing.JTextField genre;
+    private com.toedter.calendar.JDateChooser dateAddedMag;
+    private javax.swing.JLabel expLib;
+    private javax.swing.JTextField genreInp;
+    private javax.swing.JComboBox<String> genres;
     private javax.swing.JComboBox<String> itype;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -533,13 +615,16 @@ public class LibrarianJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

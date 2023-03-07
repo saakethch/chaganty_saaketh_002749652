@@ -97,7 +97,7 @@ public class SystemAdminJFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(51, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(buildingNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, 120, 30));
+        jPanel1.add(buildingNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, 120, 30));
         jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 170, 30));
 
         registerBtn.setBackground(new java.awt.Color(153, 255, 204));
@@ -116,7 +116,7 @@ public class SystemAdminJFrame extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 0, 51));
         jLabel4.setText("Branches");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 150, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 150, 30));
 
         backBtn1.setBackground(new java.awt.Color(51, 255, 255));
         backBtn1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -149,7 +149,7 @@ public class SystemAdminJFrame extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(branchesTable);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 370, 160));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 360, 160));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 0, 51));
@@ -162,11 +162,11 @@ public class SystemAdminJFrame extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Building No");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, 100, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 100, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Role");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 40, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 40, -1));
 
         usersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,7 +176,7 @@ public class SystemAdminJFrame extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Account ID", "Name", "Role"
+                "Account ID", "Username", "Role"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -189,12 +189,12 @@ public class SystemAdminJFrame extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(usersTable);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 310, 160));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 320, 160));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 0, 51));
         jLabel7.setText("Branch Actions");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 170, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 170, 30));
 
         jButton2.setBackground(new java.awt.Color(153, 255, 204));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -214,12 +214,12 @@ public class SystemAdminJFrame extends javax.swing.JFrame {
                 addBranchBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(addBranchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, -1, 30));
+        jPanel1.add(addBranchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, -1, 30));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 0, 51));
         jLabel8.setText("User Accounts");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 150, 30));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 150, 30));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(51, 0, 51));
@@ -245,7 +245,7 @@ public class SystemAdminJFrame extends javax.swing.JFrame {
         jLabel11.setText("Experience (If employee)");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 160, 30));
         jPanel1.add(exp, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 70, 30));
-        jPanel1.add(branchName, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 120, 30));
+        jPanel1.add(branchName, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, 120, 30));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setText("Password");
@@ -253,11 +253,14 @@ public class SystemAdminJFrame extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setText("Branch Name");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, 100, -1));
-        jPanel1.add(fieldBranch, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, 60, 20));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 100, -1));
 
+        fieldBranch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jPanel1.add(fieldBranch, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 590, 120, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Branch Selected : ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 590, 110, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 130, 20));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 

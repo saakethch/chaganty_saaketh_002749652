@@ -90,8 +90,7 @@ public class Library {
             this.bookDirectory.findBookById(mId).setIsAvailable(true);
         } else {
             this.magDiretory.findMagById(mId).setIsAvailable(true);
-        }
-        this.rentalRequests.removeFromRentalRequests(rr_id);
+        }        
     }
 
     public ArrayList<Material> getMaterialCollection() {
