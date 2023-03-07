@@ -266,6 +266,14 @@ public class SystemAdminJFrame extends javax.swing.JFrame {
 
     private void deleteBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBranchActionPerformed
         // TODO add your handling code here:
+        String bName = fieldBranch.getText();
+        if (bName != "") {
+            this.business.deleteBranch(bName);
+            populateBranches();
+        } else {
+            JOptionPane.showMessageDialog(null, "Select Branch");
+        }
+
     }//GEN-LAST:event_deleteBranchActionPerformed
 
     private void addBranchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBranchBtnActionPerformed

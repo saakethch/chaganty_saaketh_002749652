@@ -18,7 +18,7 @@ public class RentalRequest {
     private int duration;
     private Material material;
     private String cusId;
-
+    private String libraryName;
     public String getCusId() {
         return cusId;
     }
@@ -29,13 +29,14 @@ public class RentalRequest {
     
     private static int counter = 0;
 
-    public RentalRequest (int price, int duration, Material material, String cusId){
+    public RentalRequest (int price, int duration, Material material, String cusId, String library_name){
         this.id = "rental_request_"+this.counter++;
         this.price = price;
         this.status = "Requested";
         this.duration = duration;
         this.material = material;
         this.cusId = cusId;
+        this.libraryName = library_name;
     }
     
     

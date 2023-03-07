@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Library;
+
 import Library.Material.Material;
 import Personnel.Employee;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import Material.BookDirectory;
  * @author 15512
  */
 public class Library {
-    
+
     private ArrayList<Employee> employeeDirectory;
     private ArrayList<Material> materialCollection;
     private BookDirectory bookDirectory;
@@ -42,7 +43,7 @@ public class Library {
         this.magDiretory = magDiretory;
     }
 
-    public Library(String lib_building){
+    public Library(String lib_building) {
         this.employeeDirectory = new ArrayList<Employee>();
         this.materialCollection = new ArrayList<Material>();
         this.rentalRequests = new RentalRequestsDirectory();
@@ -52,19 +53,18 @@ public class Library {
         this.genres = new ArrayList<String>();
         this.lib_building = lib_building;
     }
-    
-    
+
     public ArrayList<Employee> getEmployeeDirectory() {
         return employeeDirectory;
     }
 
-    public void addEmployee(String employeeID, String emp_name, String designation, int exp,Library lib) {
+    public void addEmployee(String employeeID, String emp_name, String designation, int exp, Library lib) {
         Employee employee = new Employee(employeeID, emp_name, designation, exp, lib);
         this.employeeDirectory.add(employee);
-        if(designation == "manager"){
+        if (designation == "manager") {
             this.manager = employee;
         }
-        if(designation == "librarian"){
+        if (designation == "librarian") {
             this.librarian = employee;
         }
     }
@@ -72,22 +72,28 @@ public class Library {
     public void acceptRentalReq(String rr_id) {
         this.rentalRequests.findRR(rr_id).setStatus("Rented");
         String mId = this.rentalRequests.findRR(rr_id).getMaterial().getId();
-        // Check mag or book
-        this.bookDirectory.findBookById(mId).setIsAvailable(false);
+        if (this.rentalRequests.findRR(rr_id).getMaterial().getMaterialType() == "Book") {
+            this.bookDirectory.findBookById(mId).setIsAvailable(false);
+        } else {
+            this.magDiretory.findMagById(mId).setIsAvailable(false);
+        }
     }
-    
+
     public void rejectRentalReq(String rr_id) {
         this.rentalRequests.findRR(rr_id).setStatus("Rejected");
     }
-    
+
     public void returnedRentalReq(String rr_id) {
         this.rentalRequests.findRR(rr_id).setStatus("Returned");
         String mId = this.rentalRequests.findRR(rr_id).getMaterial().getId();
-        this.bookDirectory.findBookById(mId).setIsAvailable(true);
+        if (this.rentalRequests.findRR(rr_id).getMaterial().getMaterialType() == "Book") {
+            this.bookDirectory.findBookById(mId).setIsAvailable(true);
+        } else {
+            this.magDiretory.findMagById(mId).setIsAvailable(true);
+        }
         this.rentalRequests.removeFromRentalRequests(rr_id);
     }
-    
-    
+
     public ArrayList<Material> getMaterialCollection() {
         return materialCollection;
     }
@@ -109,8 +115,6 @@ public class Library {
 //        Material m = new Material(name,date);
 //        this.materialCollection.add(m);
 //    }
-    
-
     public RentalRequestsDirectory getRentalRequests() {
         return rentalRequests;
     }
@@ -134,7 +138,7 @@ public class Library {
     public void setGenres(ArrayList<String> genres) {
         this.genres = genres;
     }
-    
+
     public ArrayList<String> getGenreDirectory() {
         return genres;
     }
@@ -142,7 +146,7 @@ public class Library {
     public void addToGenreDirectory(String genre) {
         this.genres.add(genre);
     }
-    
+
     public void addToAuthorDirectory(String author) {
         this.authors.add(author);
     }
@@ -150,7 +154,7 @@ public class Library {
     public ArrayList<String> getAuthorDirectory() {
         return authors;
     }
-    
+
     public Employee getLibrarian() {
         return librarian;
     }

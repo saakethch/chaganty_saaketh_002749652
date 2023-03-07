@@ -23,7 +23,7 @@ public class RentalRequestsDirectory {
     }
     public RentalRequest addToRentalRequests(int price, int duration, Material material,String cusId) {
         
-        RentalRequest rentalRequest = new RentalRequest(price*duration, duration, material, cusId);
+        RentalRequest rentalRequest = new RentalRequest(price*duration, duration, material, cusId, material.getBranch_name());
         this.rentalRequests.add(rentalRequest);
         return rentalRequest;
     }

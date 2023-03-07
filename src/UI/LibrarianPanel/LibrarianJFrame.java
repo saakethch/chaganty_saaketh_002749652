@@ -394,6 +394,8 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         this.branch.getLibrary().rejectRentalReq(rr_id);
         this.business.rejectedReq(u_id);
         
+        JOptionPane.showMessageDialog(null, "Customer Request accepted");
+        populateRR();
     }//GEN-LAST:event_rejectRentalReqActionPerformed
 
     private void addBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookActionPerformed
@@ -461,6 +463,8 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         String u_id = (String) rentalsTable.getValueAt(selectedRow, 5);
         this.branch.getLibrary().acceptRentalReq(rr_id);
         this.business.acceptedReq(u_id);
+        JOptionPane.showMessageDialog(null, "Customer Request accepted");
+        populateRR();
     }//GEN-LAST:event_acceptRentalReq1ActionPerformed
 
     private void languageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageActionPerformed

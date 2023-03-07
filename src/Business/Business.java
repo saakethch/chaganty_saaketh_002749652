@@ -54,6 +54,16 @@ public class Business {
         }
         return null;
     }
+    
+    public Branch deleteBranch(String name) {
+        for (Branch b : this.getBranches()) {
+            if (b.getName().equals(name)) {
+                this.branches.remove(b);
+            }
+        }
+        return null;
+    }
+    
 
     public UserAccountDirectory getUserAccounts() {
         return userAccounts;
