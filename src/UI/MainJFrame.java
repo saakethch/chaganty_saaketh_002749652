@@ -121,7 +121,8 @@ public class MainJFrame extends javax.swing.JFrame {
         if(this.business.getUserAccounts().authenticateUser(password.getText(), password.getText()) != null) {
             UserAccount user = this.business.getUserAccounts().authenticateUser(password.getText(), password.getText());
             foundUser = true;
-            user.getRole().createWorkArea(business, branch, useraccount);
+            System.out.print(user.getRole().toString());
+            user.getRole().createWorkArea(business, branch, user);
             this.setVisible(false);
         } else {
             System.out.println("here");
@@ -129,7 +130,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 if(branch.getBranchUad().authenticateUser(password.getText(), username.getText()) != null) {
                     UserAccount branchUser = branch.getBranchUad().authenticateUser(password.getText(), username.getText());
                     foundUser = true;
-                    branchUser.getRole().createWorkArea(business, branch, useraccount);
+                    branchUser.getRole().createWorkArea(business, branch, branchUser);
                     this.setVisible(false);
                 }
             }

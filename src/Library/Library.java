@@ -69,6 +69,25 @@ public class Library {
         }
     }
 
+    public void acceptRentalReq(String rr_id) {
+        this.rentalRequests.findRR(rr_id).setStatus("Rented");
+        String mId = this.rentalRequests.findRR(rr_id).getMaterial().getId();
+        // Check mag or book
+        this.bookDirectory.findBookById(mId).setIsAvailable(false);
+    }
+    
+    public void rejectRentalReq(String rr_id) {
+        this.rentalRequests.findRR(rr_id).setStatus("Rejected");
+    }
+    
+    public void returnedRentalReq(String rr_id) {
+        this.rentalRequests.findRR(rr_id).setStatus("Returned");
+        String mId = this.rentalRequests.findRR(rr_id).getMaterial().getId();
+        this.bookDirectory.findBookById(mId).setIsAvailable(true);
+        this.rentalRequests.removeFromRentalRequests(rr_id);
+    }
+    
+    
     public ArrayList<Material> getMaterialCollection() {
         return materialCollection;
     }

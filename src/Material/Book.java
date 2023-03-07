@@ -17,8 +17,10 @@ public class Book extends Material{
     private String language;
     private String bindingType;
     
-    public Book(String name, Date registeredDate, String a, String g, String pages, String lang, String type){
+    public Book(String name, Date registeredDate, String a, String g, String pages, String lang, String type, String b_name){
         super();
+        this.branch_name = b_name;
+        this.id = this.getMaterialId();
         this.materialType = "Book";
         this.name = name;
         this.registeredDate = registeredDate;
@@ -27,6 +29,14 @@ public class Book extends Material{
         this.pages = pages;
         this.language = lang;
         this.bindingType = type;
+    }
+
+    public String getBranch_name() {
+        return branch_name;
+    }
+
+    public void setBranch_name(String branch_name) {
+        this.branch_name = branch_name;
     }
 
     public String getAuthor() {

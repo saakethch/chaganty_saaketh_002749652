@@ -7,8 +7,14 @@ package UI.CustomerPanels;
 
 import Business.Branch;
 import Business.Business;
+import Library.RentalRequest;
+import Material.Book;
+import Material.Magazine;
 import UI.MainJFrame;
 import UserAccount.UserAccount;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +25,12 @@ public class CustomerJFrame extends javax.swing.JFrame {
     private Business business;
     private Branch branch;
     private UserAccount useraccount;
+    DefaultTableModel matTable;
+    DefaultTableModel rrTable;
+    private Book selectedBook;
+    private Magazine selectedMag;
+    private String selectedMat;
+    private RentalRequest selectedRR;
 
     /**
      * Creates new form CustomerJFrame
@@ -28,12 +40,89 @@ public class CustomerJFrame extends javax.swing.JFrame {
     }
 
     public CustomerJFrame(Business business, Branch branch, UserAccount useraccount) {
-       initComponents();
-       this.setVisible(true);
-       
-       this.business = business;
-       this.branch = branch;
-       this.useraccount = useraccount;
+        initComponents();
+        this.setVisible(true);
+        System.out.print(useraccount.getAccountId());
+        this.business = business;
+//        this.branch = branch;
+        this.useraccount = useraccount;
+
+//        branchName.setText(branch.getName());
+//        cusName.setText(branch.getLibrary().getLibrarian().getEmp_name());
+        this.matTable = (DefaultTableModel) materialsTable.getModel();
+        this.rrTable = (DefaultTableModel) rentalsTable.getModel();
+
+        populateMaterial();
+        populateRR();
+    }
+
+    public void populateRR() {
+        rrTable.setRowCount(0);
+
+        ArrayList<RentalRequest> rrs = this.business.findCustomer(this.useraccount.getAccountId()).getRentalRequestHistory();
+        if (rrs.size() > 0) {
+            for (RentalRequest rr : rrs) {
+                Object[] row = new Object[5];
+                row[0] = rr.getId();
+                row[1] = rr.getPrice();
+                row[2] = rr.getMaterial().getName();
+                row[3] = rr.getDuration();
+                row[4] = rr.getStatus();
+
+                rrTable.addRow(row);
+            }
+        }
+
+    }
+
+    public void populateMaterial() {
+        matTable.setRowCount(0);
+
+        ArrayList<Book> books = new ArrayList<Book>();
+        ArrayList<Magazine> mags = new ArrayList<Magazine>();
+        for (Branch b : this.business.getBranches()) {
+            for (Book br_b : b.getLibrary().getBookDirectory().getBooks()) {
+                books.add(br_b);
+            }
+            for (Magazine br_m : b.getLibrary().getMagDiretory().getMagazines()) {
+                mags.add(br_m);
+            }
+        }
+        if (books.size() > 0) {
+            for (Book b : books) {
+                Object[] row = new Object[11];
+                row[0] = b.getId();
+                row[1] = b.getMaterialType();
+                row[2] = b.getName();
+                row[3] = b.getAuthor();
+                row[4] = b.getGenre();
+                row[5] = b.getPages();
+                row[6] = "-";
+                row[7] = "-";
+                row[8] = b.getIsAvailable() ? "YES" : "NO";
+                row[9] = b.getRegisteredDate();
+                row[10] = b.getBranch_name();
+                matTable.addRow(row);
+            }
+        }
+
+        if (mags.size() > 0) {
+            for (Magazine m : mags) {
+                Object[] row = new Object[11];
+                row[0] = m.getId();
+                row[1] = m.getMaterialType();
+                row[2] = m.getName();
+                row[3] = "-";
+                row[4] = "-";
+                row[5] = "-";
+                row[6] = m.getCompany();
+                row[7] = m.getIssueType();
+                row[8] = m.getIsAvailable() ? "YES" : "NO";
+                row[9] = m.getRegisteredDate();
+                row[10] = m.getBranch_name();
+                matTable.addRow(row);
+            }
+        }
     }
 
     /**
@@ -49,17 +138,27 @@ public class CustomerJFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        branchName = new javax.swing.JLabel();
+        cusName = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        rentRequest = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         materialsTable = new javax.swing.JTable();
-        jLabel8 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        javax.swing.JTable rentalRequestsTable = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        selectBook = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        matId = new javax.swing.JTextField();
+        duration = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        rentalPrice = new javax.swing.JTextField();
+        returnMat = new javax.swing.JButton();
+        selectRental = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        rentalsTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,143 +180,227 @@ public class CustomerJFrame extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel6.setText("Branch  ");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Branch  ");
+        branchName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        branchName.setText("Branch  ");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Customer");
+        cusName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cusName.setText("Customer");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel5.setText("Customer");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setText("Material");
+        jLabel7.setText("Materials");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Welcome back Bookworm ");
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setText("Rental Requests History");
+
+        rentRequest.setBackground(new java.awt.Color(204, 255, 153));
+        rentRequest.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        rentRequest.setText("Rent Request");
+        rentRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rentRequestActionPerformed(evt);
+            }
+        });
+
         materialsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Material Type", "Title", "Author", "Genre", "Pages", "Company", "Issue Type", "Is Available", "Date Added", "Branch"
             }
         ));
         jScrollPane2.setViewportView(materialsTable);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Rental Requests History");
-
-        rentalRequestsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(rentalRequestsTable);
-
-        jButton2.setBackground(new java.awt.Color(153, 255, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setText("Rent Request");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        selectBook.setBackground(new java.awt.Color(153, 255, 255));
+        selectBook.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selectBook.setText("Select Book");
+        selectBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                selectBookActionPerformed(evt);
             }
         });
+
+        jLabel9.setText("Material ID");
+
+        matId.setEditable(false);
+
+        duration.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                durationFocusLost(evt);
+            }
+        });
+
+        jLabel10.setText("Duration (In Days)");
+
+        jLabel11.setText("Price (In $)");
+
+        rentalPrice.setEditable(false);
+        rentalPrice.setText("20");
+        rentalPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rentalPriceActionPerformed(evt);
+            }
+        });
+
+        returnMat.setBackground(new java.awt.Color(204, 255, 204));
+        returnMat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        returnMat.setText("Return");
+        returnMat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnMatActionPerformed(evt);
+            }
+        });
+
+        selectRental.setBackground(new java.awt.Color(153, 255, 255));
+        selectRental.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selectRental.setText("Select Rental");
+        selectRental.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectRentalActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel12.setText("Request Material");
+
+        rentalsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Price", "Material ", "Duration", "Status"
+            }
+        ));
+        jScrollPane3.setViewportView(rentalsTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(103, 103, 103))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(26, 26, 26)))))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGap(223, 223, 223)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(207, 207, 207))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel7))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(190, 190, 190)
+                        .addComponent(selectBook, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(rentRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(23, 23, 23)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel1)))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel7)
-                                            .addGap(0, 0, Short.MAX_VALUE)))
-                                    .addGap(73, 73, 73)
-                                    .addComponent(backBtn))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE)))))
-                    .addGap(23, 23, 23)))
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel10))
+                            .addGap(29, 29, 29)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(matId)
+                                .addComponent(duration)
+                                .addComponent(rentalPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(112, 112, 112))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cusName, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(branchName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(backBtn)
+                .addGap(38, 38, 38))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(selectRental, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(returnMat, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel6)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backBtn)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(branchName)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cusName)
+                            .addComponent(jLabel5))))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jButton2)
-                        .addGap(96, 96, 96))
+                        .addComponent(selectBook, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(jLabel8)
-                .addContainerGap(212, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel7))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1)
-                                .addComponent(backBtn))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel3)))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel12))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(matId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel11)
+                                    .addComponent(rentalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(rentRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(selectRental, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(returnMat, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29))))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -231,9 +414,70 @@ public class CustomerJFrame extends javax.swing.JFrame {
         new MainJFrame(business, branch, useraccount);
     }//GEN-LAST:event_backBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void rentRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentRequestActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        if (this.business.findCustomer(this.useraccount.getAccountId()).getCurrentRental() == null) {
+            if (this.selectedMat == "mag" ? this.selectedMag.getIsAvailable() : this.selectedBook.getIsAvailable()) {
+                RentalRequest rr = this.branch.getLibrary().getRentalRequests()
+                        .addToRentalRequests(20, Integer.parseInt(duration.getText()),
+                                this.selectedMat == "mag" ? this.selectedMag : this.selectedBook, this.useraccount.getAccountId());
+                this.business.findCustomer(this.useraccount.getAccountId()).addToRentalRequestHistory(rr);
+                JOptionPane.showMessageDialog(null, "Material Requested");
+                System.out.print("\n cus : " + this.useraccount.getAccountId());
+                populateRR();
+            } else {
+                JOptionPane.showMessageDialog(null, "Material not Available");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Limited to only one Rental Request");
+        }
+    }//GEN-LAST:event_rentRequestActionPerformed
+
+    private void selectBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBookActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = materialsTable.getSelectedRow();
+        String mat_id = (String) materialsTable.getValueAt(selectedRow, 0);
+        String mat_br = (String) materialsTable.getValueAt(selectedRow, 10);
+        System.out.print("--" + mat_br);
+        this.branch = this.business.findBranchByName(mat_br);
+        if (materialsTable.getValueAt(selectedRow, 1) == "Book") {
+            this.selectedBook = this.business.findBranchByName(mat_br).getLibrary().getBookDirectory().findBookById(mat_id);
+            this.selectedMat = "book";
+            matId.setText(mat_id);
+
+        } else {
+            this.selectedMag = this.business.findBranchByName(mat_br).getLibrary().getMagDiretory().findMagById(mat_id);
+            this.selectedMat = "mag";
+            matId.setText(mat_id);
+        }
+    }//GEN-LAST:event_selectBookActionPerformed
+
+    private void durationFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_durationFocusLost
+
+    }//GEN-LAST:event_durationFocusLost
+
+    private void rentalPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentalPriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rentalPriceActionPerformed
+
+    private void returnMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnMatActionPerformed
+        // TODO add your handling code here:
+        if (this.selectedRR.getStatus() == "Rented") {
+            this.business.returnedReq(this.useraccount.getAccountId());
+            this.branch.getLibrary().returnedRentalReq(this.selectedRR.getId());
+            JOptionPane.showMessageDialog(null, "Returned Material");
+        } else {
+            JOptionPane.showMessageDialog(null, "Selected Material is not rented");
+        }
+    }//GEN-LAST:event_returnMatActionPerformed
+
+    private void selectRentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectRentalActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = rentalsTable.getSelectedRow();
+        String rr_id = (String) rentalsTable.getValueAt(selectedRow, 0);
+        this.selectedRR = this.branch.getLibrary().getRentalRequests().findRR(rr_id);
+
+    }//GEN-LAST:event_selectRentalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,18 +516,29 @@ public class CustomerJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel branchName;
+    private javax.swing.JLabel cusName;
+    private javax.swing.JTextField duration;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField matId;
     private javax.swing.JTable materialsTable;
+    private javax.swing.JButton rentRequest;
+    private javax.swing.JTextField rentalPrice;
+    private javax.swing.JTable rentalsTable;
+    private javax.swing.JButton returnMat;
+    private javax.swing.JButton selectBook;
+    private javax.swing.JButton selectRental;
     // End of variables declaration//GEN-END:variables
 }

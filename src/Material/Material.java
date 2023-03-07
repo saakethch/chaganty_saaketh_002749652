@@ -17,6 +17,14 @@ public class Material {
     public Date registeredDate;
     public Boolean isAvailable = true;
     public String materialType;
+    public String branch_name;
+    public String getBranch_name() {
+        return branch_name;
+    }
+
+    public void setBranch_name(String branch_name) {
+        this.branch_name = branch_name;
+    }
 
     public String getMaterialType() {
         return materialType;
@@ -45,6 +53,10 @@ public class Material {
     public Material(){
         this.id = "Serial" + count++; 
     }
+    public String getMaterialId() {
+        return "mat_" + count++; 
+    }
+    
     
 //    public Material(String name, Date date){
 //        this.id = "Serial" + count++;

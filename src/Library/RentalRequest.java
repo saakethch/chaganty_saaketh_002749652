@@ -17,15 +17,25 @@ public class RentalRequest {
     private String status;
     private int duration;
     private Material material;
+    private String cusId;
+
+    public String getCusId() {
+        return cusId;
+    }
+
+    public void setCusId(String cusId) {
+        this.cusId = cusId;
+    }
     
     private static int counter = 0;
 
-    public RentalRequest (int price, int duration, Material material){
+    public RentalRequest (int price, int duration, Material material, String cusId){
         this.id = "rental_request_"+this.counter++;
         this.price = price;
-        this.status = "Created";
+        this.status = "Requested";
         this.duration = duration;
         this.material = material;
+        this.cusId = cusId;
     }
     
     

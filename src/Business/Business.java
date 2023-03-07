@@ -9,8 +9,12 @@ import Library.Library;
 import Personnel.Employee;
 import Role.SystemAdminRole;
 import Personnel.Customer;
+import Role.CustomerRole;
+import Role.LibrarianRole;
+import UserAccount.UserAccount;
 import UserAccount.UserAccountDirectory;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -28,6 +32,14 @@ public class Business {
         this.userAccounts = new UserAccountDirectory();
         // CREATING ADMIN
         this.userAccounts.createUserAccount("a", "a", new SystemAdminRole());
+//        UserAccount ua = this.userAccounts.createUserAccount("c", "c", new CustomerRole());
+//        Customer c = new Customer(ua.getAccountId(), "saaketh");
+//        this.customers.add(c);
+//        this.branches.add(new Branch("def","10"));
+//        this.branches.get(0).getBranchUad().createUserAccount("l", "l", new LibrarianRole());
+//        this.branches.get(0).getLibrary().getMagDiretory().addMagazine("Vogue", new  Date(), "marian", "weekly","def");
+//        
+//        
     }
 
     public ArrayList<Branch> getBranches() {
@@ -82,5 +94,15 @@ public class Business {
 
     public static Business getInstance() {
         return new Business();
+    }
+    
+    public void acceptedReq(String u_id){
+        this.findCustomer(u_id).getCurrentRental().setStatus("Rented");
+    }
+    public void rejectedReq(String u_id){
+        this.findCustomer(u_id).getCurrentRental().setStatus("Rejected");
+    }
+    public void returnedReq(String u_id){
+        this.findCustomer(u_id).getCurrentRental().setStatus("Returned");
     }
 }

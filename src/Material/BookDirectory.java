@@ -23,8 +23,8 @@ public class BookDirectory {
         return books;
     }
     
-    public Book addBook(String name, Date registerDate, String a, String g, String pages, String lang, String type){
-        Book book = new Book(name, registerDate, a, g, pages, lang, type);
+    public Book addBook(String name, Date registerDate, String a, String g, String pages, String lang, String type, String bname){
+        Book book = new Book(name, registerDate, a, g, pages, lang, type, bname);
         this.books.add(book);
         
         return book;

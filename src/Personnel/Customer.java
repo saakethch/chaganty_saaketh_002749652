@@ -29,20 +29,7 @@ public class Customer {
     public String getId() {
         return id;
     }
-    
-//    public void createRentalRequest(int price, int duration, Material material, Library lib){
-//        this.currentRental = new RentalRequest(price,  duration, material);
-//        this.rentalRequestHistory.add(this.currentRental);
-//        this.library.getRentalRequests().addToRentalRequests(this.currentRental);
-//    }
-//    
-//    public void returnRentalRequest(){
-//        this.currentRental.setStatus("Returned");
-//        this.currentRental.getMaterial().setIsAvailable(true);
-//        this.library.getRentalRequests().addToRentalRequests(this.currentRental);
-//        
-//    }
-
+     
     public void setId(String id) {
         this.id = id;
     }
@@ -69,6 +56,7 @@ public class Customer {
     }
 
     public void addToRentalRequestHistory(RentalRequest rr) {
+        this.currentRental = rr;
         this.rentalRequestHistory.add(rr);
     }
     

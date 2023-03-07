@@ -14,13 +14,23 @@ public class Magazine extends Material{
     private String company;
     private String issueType;
     
-    public Magazine(String name, Date registeredDate, String c, String it){
+    public Magazine(String name, Date registeredDate, String c, String it, String b_name){
         super();
+        this.branch_name = b_name;
+        this.id = this.getMaterialId();
         this.materialType = "Magazine";
         this.name = name;
         this.registeredDate = registeredDate;
         this.company = c;
         this.issueType = it;
+    }
+
+    public String getBranch_name() {
+        return branch_name;
+    }
+
+    public void setBranch_name(String branch_name) {
+        this.branch_name = branch_name;
     }
 
     public String getCompany() {
